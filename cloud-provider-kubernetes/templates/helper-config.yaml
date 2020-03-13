@@ -1,0 +1,12 @@
+{{- if .Values.kubernetesRequestHelperFile }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "cloud-provider-kubernetes.fullname" . }}-helper-config
+  namespace: {{ .Values.namespace.portal.name }}
+  labels:
+  {{- include "cloud-provider-kubernetes.labels" . | nindent 4 }}
+data:
+  k8s-request-helper.js: |-
+{{  .Values.kubernetesRequestHelperFile | indent 4 }}
+  {{ end }}

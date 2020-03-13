@@ -1,0 +1,6 @@
+{{- if .Values.namespace.instances.creation}}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.namespace.instances.name }}
+{{- end}}

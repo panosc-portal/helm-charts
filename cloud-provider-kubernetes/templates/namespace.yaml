@@ -1,0 +1,6 @@
+{{- if .Values.namespace.portal.creation}}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.namespace.portal.name }}
+{{- end }}

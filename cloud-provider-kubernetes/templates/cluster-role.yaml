@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "cloud-provider-kubernetes.fullname" . }}-cluster-role
+rules:
+  - apiGroups: ["", "extensions", "apps"]
+    resources: ["pods", "services", "namespaces", "deployments", "secrets","nodes","endpoints"]
+    verbs: ["list", "get","create", "delete"]

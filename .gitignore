@@ -1,0 +1,9 @@
+# Logs
+logs
+*.log
+
+.idea
+.vscode
+.workspace
+
+git_repos

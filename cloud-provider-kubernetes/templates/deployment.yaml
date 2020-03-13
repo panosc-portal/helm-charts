@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "cloud-provider-kubernetes.fullname" . }}
+  namespace: {{ .Values.namespace.portal.name }}
+  labels:
+    {{- include "cloud-provider-kubernetes.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "cloud-provider-kubernetes.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "cloud-provider-kubernetes.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.service.nodePorts.nodeJSDebug }}
+          command:
+            - "npm"
+            - "run"
+            - "debug"
+          {{- end }}
+          ports:
+            - name: api
+              containerPort: 3000
+            {{- if .Values.service.nodePorts.nodeJSDebug}}
+            - name: debug
+              containerPort: 9229
+            {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "cloud-provider-kubernetes.fullname" . }}-config
+            - secretRef:
+                name: {{ include "cloud-provider-kubernetes.fullname" . }}-secret
+          volumeMounts:
+            {{- if .Values.kubernetesRequestHelperFile }}
+            - mountPath: /home/node/app/helper
+              name: helper
+            {{- end }}
+            {{- if .Values.dockerSecretFile }}
+            - mountPath: /home/node/app/secrets
+              name: dockersecrets
+            {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        {{- if .Values.kubernetesRequestHelperFile }}
+        - name: helper
+          configMap:
+            name: {{ include "cloud-provider-kubernetes.fullname" . }}-helper-config
+        {{- end }}
+        {{- if .Values.dockerSecretFile }}
+        - name: dockersecrets
+          configMap:
+            name: {{ include "cloud-provider-kubernetes.fullname" . }}-dockersecrets-config
+        {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
