@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ include "cloud-provider-kubernetes.fullname" . }}-rolebinding
+  name: {{ include "cloud-provider-kubernetes.name" . }}-rolebinding
   labels:
   {{- include "cloud-provider-kubernetes.labels" . | nindent 4 }}
 roleRef:
@@ -11,4 +11,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: cloud-provider-kubernetes-sa
-    namespace: {{ .Values.namespace.portal.name }}
+    namespace: {{ .Values.global.namespace.name }}

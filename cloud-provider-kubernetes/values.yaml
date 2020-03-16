@@ -14,15 +14,10 @@ service:
     api : 32300
     nodeJSDebug: 32402
 
-
 namespace:
-  portal:
-    creation: true
-    name: panosc-portal
   instances:
     creation: true
     name: panosc-instances
-
 
 kubernetesRequestHelperFile:
 
@@ -49,17 +44,24 @@ resources: {}
 
 logLevel: debug
 
-database:
-  host:
-  port: 5432
-  type: postgres
-  nodePort: 32400
-  username:
-  password:
-  databaseName: cloud-provider-kubernetes
-  schema: cloud-provider-kubernetes
-  log: false
-  sync: false
+
+global:
+  namespace:
+      name: panosc-portal
+
+
+  database:
+    host: panosc-postgres
+    port: 5432
+    type: postgres
+    log: true
+    sync: true
+    cloudProviderKubernetes:
+      username: cloud-provider-kubernetes
+      password: test
+      databaseName: cloud-provider-kubernetes
+      schema: cloud-provider-kubernetes
+
 
 #imagePullSecrets: []
 #nameOverride: ""

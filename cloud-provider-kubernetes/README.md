@@ -15,7 +15,7 @@ helm install -f myvalues.yaml my-release panosc-portal/cloud-provider-kubernetes
 ```
 or by setting the values that you want to modify with the flag --set:
 ```
-helm install --set database.host=database.panosc.eu  --set database.username=test --set database.password=password my-release panosc-portal/cloud-provider-kubernetes
+helm install --set global.database.host=database.panosc.eu  --set global.database.cloudProviderKubernetes.username=test --set global.database.cloudProviderKubernetes.password=password my-release panosc-portal/cloud-provider-kubernetes
 ```
 
 # Upgrade the Chart
@@ -45,8 +45,6 @@ image.repository | CloudProviderKubernetes docker image | panosc/cloud-provider-
 image.pullPolicy | Image pull policy | IfNotPresent
 service.nodePorts.api | NodePort for the api | 32300
 service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 32300
-namespace.portal.creation | Boolean to create or not the portal namespace | true
-namespace.portal.name | Name of the portal namespace  | panosc-portal
 namespace.instances.creation | Boolean to create or not the instances namespace | true
 namespace.instances.name| Name of the instances namespace | panosc-instances 
 kubernetesRequestHelperFile | Content of a file containing a  kubernetes request helper (via --set-file) |
@@ -56,15 +54,16 @@ tolerations|Toleration labels for pod assignment| []
 affinity|Affinity labels for pod assignment|{}
 resources|Custom resource configuration for the CloudProviderKubernetes pod | {}
 logLevel| Log level of the CloudProviderKubernetes ( debug, info, warn, error | info
-database.host| Database hostname 
-database.port| Database port | 5432
-database.type| Database type (oracle, postgres, mariadb ...) | postgres
-database.username| Username to access the CloudProviderKubernetes microservice database
-database.password| Password to access the CloudProviderKubernetes microservice database 
-database.databaseName| Database name for the CloudProviderKubernetes microservice | cloud-provider-kubernetes
-database.schema| Database schema for the CloudProviderKubernetes microservice (if definable) | cloud-provider-kubernetes
-database.log| Boolean to activate or not database logs | false
-database.sync| Boolean to activate or not database synchronisation | false
+global.namespace.name | Name of namespace in witch the microservice will be installed (namespace must be already created) | default
+global.database.host| Database hostname 
+global.database.port| Database port | 5432
+global.database.type| Database type (oracle, postgres, mariadb ...) | postgres
+global.database.log| Boolean to activate or not database logs | false
+global.database.sync| Boolean to activate or not database synchronisation | false
+global.database.cloudProviderKubernetes.username| Username to access the CloudProviderKubernetes microservice database
+global.database.cloudProviderKubernetes.password| Password to access the CloudProviderKubernetes microservice database 
+global.database.cloudProviderKubernetes.databaseName| Database name for the CloudProviderKubernetes microservice | cloud-provider-kubernetes
+global.database.cloudProviderKubernetes.schema| Database schema for the CloudProviderKubernetes microservice (if definable) | cloud-provider-kubernetes
 
 
 # Use the service

@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "cloud-provider-kubernetes.fullname" . }}
-  namespace: {{ .Values.namespace.portal.name }}
+  name: {{ include "cloud-provider-kubernetes.name" . }}
+  namespace: {{ .Values.global.namespace.name }}
   labels:
     {{- include "cloud-provider-kubernetes.labels" . | nindent 4 }}
 spec:
@@ -34,9 +34,9 @@ spec:
             {{- end }}
           envFrom:
             - configMapRef:
-                name: {{ include "cloud-provider-kubernetes.fullname" . }}-config
+                name: {{ include "cloud-provider-kubernetes.name" . }}-config
             - secretRef:
-                name: {{ include "cloud-provider-kubernetes.fullname" . }}-secret
+                name: {{ include "cloud-provider-kubernetes.name" . }}-secret
           volumeMounts:
             {{- if .Values.kubernetesRequestHelperFile }}
             - mountPath: /home/node/app/helper
@@ -52,12 +52,12 @@ spec:
         {{- if .Values.kubernetesRequestHelperFile }}
         - name: helper
           configMap:
-            name: {{ include "cloud-provider-kubernetes.fullname" . }}-helper-config
+            name: {{ include "cloud-provider-kubernetes.name" . }}-helper-config
         {{- end }}
         {{- if .Values.dockerSecretFile }}
         - name: dockersecrets
           configMap:
-            name: {{ include "cloud-provider-kubernetes.fullname" . }}-dockersecrets-config
+            name: {{ include "cloud-provider-kubernetes.name" . }}-dockersecrets-config
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
