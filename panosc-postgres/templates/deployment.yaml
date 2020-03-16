@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "panosc-postgres.name" . }}
+  namespace: {{ .Values.namespace.portal.name }}
+  labels:
+    {{- include "panosc-postgres.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "panosc-postgres.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "panosc-postgres.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.dockerTag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: {{ include "panosc-postgres.name" . }}-secret
+            - configMapRef:
+                name: {{ include "panosc-postgres.name" . }}-config
+          volumeMounts:
+            - mountPath: /docker-entrypoint-initdb.d/
+              name: init-file
+            - mountPath: /tmp/
+              name: sql-dump
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: init-file
+          configMap:
+            name: {{ include "panosc-postgres.fullname" . }}-shconfig
+        - name: sql-dump
+          configMap:
+            name: {{ include "panosc-postgres.fullname" . }}-sqldump
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}

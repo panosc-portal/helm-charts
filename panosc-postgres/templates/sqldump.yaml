@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "panosc-postgres.name" . }}-sqldump
+  namespace: {{.Values.namespace.portal.name}}
+  labels:
+  {{- include "panosc-postgres.labels" . | nindent 4 }}
+data:
+{{(.Files.Glob "postgres-config-files/*.sql").AsConfig | indent 4 }}
+

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "panosc-postgres.name" . }}
+  namespace: {{ .Values.namespace.portal.name }}
+  labels:
+    {{- include "panosc-postgres.labels" . | nindent 4 }}
+spec:
+  type: NodePort
+  ports:
+    - name: database
+      port: 5432
+      nodePort: {{ .Values.service.nodePorts.database }}
+  selector:
+    {{- include "panosc-postgres.selectorLabels" . | nindent 4 }}
