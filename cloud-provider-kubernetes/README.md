@@ -81,7 +81,7 @@ After you have installed the CLI, move to it's directory and run the next comman
 ```  
 You will then be able to choose the image you want for your instance and then the flavour that you want (i.e CPU and RAM)<br/>  
   
-Then, enter a name for you new instance. For the rest of the questions, you can put the default values.  
+Then, enter a name for you new instance.  
 
 ### List all the created instances:  
   

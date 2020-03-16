@@ -1,6 +1,6 @@
-{{- if .Values.namespace.portal.creation}}
+{{- if .Values.global.namespace.creation}}
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {{ .Values.namespace.portal.name }}
+  name: {{ .Values.global.namespace.name }}
 {{- end }}
