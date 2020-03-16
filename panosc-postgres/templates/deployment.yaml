@@ -36,10 +36,10 @@ spec:
       volumes:
         - name: init-file
           configMap:
-            name: {{ include "panosc-postgres.fullname" . }}-shconfig
+            name: {{ include "panosc-postgres.name" . }}-shconfig
         - name: sql-dump
           configMap:
-            name: {{ include "panosc-postgres.fullname" . }}-sqldump
+            name: {{ include "panosc-postgres.name" . }}-sqldump
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
