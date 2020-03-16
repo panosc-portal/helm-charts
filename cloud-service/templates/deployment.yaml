@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "cloud-service.name" . }}
+  namespace: {{ .Values.global.namespace.name}}
+  labels:
+    {{- include "cloud-service.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "cloud-service.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "cloud-service.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image:  "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.service.nodePorts.nodeJSDebug }}
+          command:
+            - "npm"
+            - "run"
+            - "debug"
+          {{- end }}
+          ports:
+            - name: api
+              containerPort: 3000
+            {{- if .Values.service.nodePorts.nodeJSDebug}}
+            - name: debug
+              containerPort: 9229
+            {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "cloud-service.name" . }}-config
+            - secretRef:
+                name: {{ include "cloud-service.name" . }}-secret
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}

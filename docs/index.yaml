@@ -3,7 +3,7 @@ entries:
   cloud-provider-kubernetes:
   - apiVersion: v2
     appVersion: latest
-    created: "2020-03-16T14:16:09.896658+01:00"
+    created: "2020-03-16T15:02:42.199169+01:00"
     description: A Helm chart for Kubernetes
     digest: 6d60847626349c39f821f80261315f2ba54f48fb88067a55e979c140a0469a85
     name: cloud-provider-kubernetes
@@ -11,10 +11,21 @@ entries:
     urls:
     - https://panosc-portal.github.io/helm-charts/cloud-provider-kubernetes-0.1.0.tgz
     version: 0.1.0
+  cloud-service:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2020-03-16T15:02:42.199835+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 6b52eae5eebead7c905dbc1824aecb46d742586479daa63d983a8a5e649de226
+    name: cloud-service
+    type: application
+    urls:
+    - https://panosc-portal.github.io/helm-charts/cloud-service-0.1.0.tgz
+    version: 0.1.0
   panosc-portal-demo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-16T14:16:09.89934+01:00"
+    created: "2020-03-16T15:02:42.201408+01:00"
     dependencies:
     - name: cloud-provider-kubernetes
       repository: https://panosc-portal.github.io/helm-charts/
@@ -32,7 +43,17 @@ entries:
   panosc-postgres:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-16T14:16:09.900916+01:00"
+    created: "2020-03-16T15:02:42.202563+01:00"
+    description: A Helm chart for Kubernetes
+    digest: cc710ca96af0c82a77cfafa8ec34deb357cd76b5d213d698f396084d3436a055
+    name: panosc-postgres
+    type: application
+    urls:
+    - https://panosc-portal.github.io/helm-charts/panosc-postgres-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-03-16T15:02:42.201964+01:00"
     description: A Helm chart for Kubernetes
     digest: 96a611aa9f9adf031aee5262cd2dfa2cbca406ee93c3cd0509f0c1f6e962ff8b
     name: panosc-postgres
@@ -40,4 +61,4 @@ entries:
     urls:
     - https://panosc-portal.github.io/helm-charts/panosc-postgres-0.1.0.tgz
     version: 0.1.0
-generated: "2020-03-16T14:16:09.892778+01:00"
+generated: "2020-03-16T15:02:42.197484+01:00"
