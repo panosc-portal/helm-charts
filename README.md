@@ -8,3 +8,7 @@ The following command allows you to download and install all the charts from thi
 helm repo add panosc-portal https://panosc-portal.github.io/helm-charts/
 ```
 
+## Update Repo
+```
+helm repo update
+```
