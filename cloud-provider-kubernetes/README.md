@@ -55,7 +55,7 @@ affinity|Affinity labels for pod assignment|{}
 resources|Custom resource configuration for the CloudProviderKubernetes pod | {}
 logLevel| Log level of the CloudProviderKubernetes ( debug, info, warn, error | info
 global.namespace.name | Name of namespace in witch the microservice will be installed (namespace must be already created) | default
-global.database.host| Database hostname 
+global.database.host| Database hostname | panosc-postgres
 global.database.port| Database port | 5432
 global.database.type| Database type (oracle, postgres, mariadb ...) | postgres
 global.database.log| Boolean to activate or not database logs | false

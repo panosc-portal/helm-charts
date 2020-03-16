@@ -47,7 +47,7 @@ logLevel: debug
 
 global:
   namespace:
-      name: panosc-portal
+      name: default
 
 
   database:
@@ -58,7 +58,7 @@ global:
     sync: true
     cloudProviderKubernetes:
       username: cloud-provider-kubernetes
-      password: test
+      password:
       databaseName: cloud-provider-kubernetes
       schema: cloud-provider-kubernetes
 
