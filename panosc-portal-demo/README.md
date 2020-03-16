@@ -46,6 +46,9 @@ username: postgres
 
 #### [Cloud Provider Kubernetes](../cloud-provider-kubernetes/README.md)
 
+#### [Cloud Service](../cloud-service/README.md)
+For the demo deployment, the plans have bean created in the given database.
+You can then create instances with those given plans.
 
 ## Status
 
@@ -53,4 +56,5 @@ The deployment of the portal will be continually updated when new microservices 
 
 16/03/2019 :
 
-This project will deploy the  [Cloud Provider Kubernetes](https://github.com/panosc-portal/cloud-provider-kubernetes) microservice and a PostgreSQL database with the example data. 
+This project will deploy the  [Cloud Provider Kubernetes](https://github.com/panosc-portal/cloud-provider-kubernetes) and [Cloud service](https://github.com/panosc-portal/cloud-service) microservice and a PostgreSQL database with the example data. 
+

@@ -3,9 +3,9 @@ entries:
   cloud-provider-kubernetes:
   - apiVersion: v2
     appVersion: latest
-    created: "2020-03-16T15:02:42.199169+01:00"
+    created: "2020-03-16T16:22:28.727334+01:00"
     description: A Helm chart for Kubernetes
-    digest: 6d60847626349c39f821f80261315f2ba54f48fb88067a55e979c140a0469a85
+    digest: 674f5a4ffce19f048748a79433513aff1fd4acf992ebbb5be3511e9ea33dd781
     name: cloud-provider-kubernetes
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   cloud-service:
   - apiVersion: v2
     appVersion: latest
-    created: "2020-03-16T15:02:42.199835+01:00"
+    created: "2020-03-16T16:22:28.728286+01:00"
     description: A Helm chart for Kubernetes
-    digest: 6b52eae5eebead7c905dbc1824aecb46d742586479daa63d983a8a5e649de226
+    digest: e9c5a46dcd4d3414662235e3b695fdc492ab3558f4dd84bc690499abb370eb8c
     name: cloud-service
     type: application
     urls:
@@ -25,7 +25,27 @@ entries:
   panosc-portal-demo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-16T15:02:42.201408+01:00"
+    created: "2020-03-16T16:22:28.73249+01:00"
+    dependencies:
+    - name: cloud-provider-kubernetes
+      repository: https://panosc-portal.github.io/helm-charts/
+      version: 0.1.0
+    - name: panosc-postgres
+      repository: https://panosc-portal.github.io/helm-charts/
+      version: 0.1.1
+    - name: cloud-service
+      repository: https://panosc-portal.github.io/helm-charts/
+      version: 0.1.0
+    description: A Helm chart for Kubernetes
+    digest: ba2e61558d817368ced57c9d5cbb7dd030cfb650ff6ebf9d8913a11e2c5e5af7
+    name: panosc-portal-demo
+    type: application
+    urls:
+    - https://panosc-portal.github.io/helm-charts/panosc-portal-demo-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-03-16T16:22:28.730846+01:00"
     dependencies:
     - name: cloud-provider-kubernetes
       repository: https://panosc-portal.github.io/helm-charts/
@@ -43,7 +63,7 @@ entries:
   panosc-postgres:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-16T15:02:42.202563+01:00"
+    created: "2020-03-16T16:22:28.735331+01:00"
     description: A Helm chart for Kubernetes
     digest: cc710ca96af0c82a77cfafa8ec34deb357cd76b5d213d698f396084d3436a055
     name: panosc-postgres
@@ -53,7 +73,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-16T15:02:42.201964+01:00"
+    created: "2020-03-16T16:22:28.733807+01:00"
     description: A Helm chart for Kubernetes
     digest: 96a611aa9f9adf031aee5262cd2dfa2cbca406ee93c3cd0509f0c1f6e962ff8b
     name: panosc-postgres
@@ -61,4 +81,4 @@ entries:
     urls:
     - https://panosc-portal.github.io/helm-charts/panosc-postgres-0.1.0.tgz
     version: 0.1.0
-generated: "2020-03-16T15:02:42.197484+01:00"
+generated: "2020-03-16T16:22:28.724911+01:00"

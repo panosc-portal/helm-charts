@@ -27,13 +27,6 @@ resources: {}
   #   cpu: 100m
 #   memory: 128Mi
 
-cloud-provider-kubernetes:
-  database:
-    username: test
-    password: test
-  namespace:
-    portal:
-      creation: false
 
 logLevel: debug
 
@@ -45,9 +38,14 @@ global:
   database:
     cloudProviderKubernetes:
       username: cloud-provider-kubernetes
-      password: test
+      password: cloud-provider-kubernetes
       databaseName: cloud-provider-kubernetes
       schema: cloud-provider-kubernetes
+    cloudService:
+      username: cloud-service
+      password: cloud-service
+      databaseName: cloud-service
+      schema: cloud-service
 
   #imagePullSecrets: []
   #nameOverride: ""

@@ -44,7 +44,7 @@ image.registry| Define the registry where the CloudProviderKubernetes is stored 
 image.repository | CloudProviderKubernetes docker image | panosc/cloud-provider-kubernetes
 image.pullPolicy | Image pull policy | IfNotPresent
 service.nodePorts.api | NodePort for the api | 32300
-service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 32300
+service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 32401
 namespace.instances.creation | Boolean to create or not the instances namespace | true
 namespace.instances.name| Name of the instances namespace | panosc-instances 
 kubernetesRequestHelperFile | Content of a file containing a  kubernetes request helper (via --set-file) |
@@ -53,7 +53,7 @@ nodeSelector| Node labels for pod assignment| {}
 tolerations|Toleration labels for pod assignment| []
 affinity|Affinity labels for pod assignment|{}
 resources|Custom resource configuration for the CloudProviderKubernetes pod | {}
-logLevel| Log level of the CloudProviderKubernetes ( debug, info, warn, error | info
+logLevel| Log level of the CloudProviderKubernetes ( debug, info, warn, error | debug
 global.namespace.name | Name of namespace in witch the microservice will be installed (namespace must be already created) | default
 global.database.host| Database hostname | panosc-postgres
 global.database.port| Database port | 5432
