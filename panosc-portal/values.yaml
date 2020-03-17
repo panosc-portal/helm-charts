@@ -1,0 +1,15 @@
+# Default values for panosc-portal.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  namespace:
+    creation: true
+    name: panosc-portal
+
+  database:
+    host:
+    cloudProviderKubernetes:
+      password:
+    cloudService:
+      password:

@@ -22,7 +22,7 @@ helm repo add panosc-portal https://panosc-portal.github.io/helm-charts/
 
 Then you can run the helm install command followed with the name you want to call it:
 ```
-helm install <YourReleaseName> panosc-portal/panosc-portal-demo-chart
+helm install <YourReleaseName> panosc-portal/panosc-portal-demo
 ```
 
 You can then find the kubernetes services and pods in the namespace panosc-portal.
