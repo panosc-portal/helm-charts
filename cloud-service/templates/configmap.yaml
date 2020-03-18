@@ -11,6 +11,6 @@ data:
   CLOUD_SERVICE_DATABASE_TYPE: {{ .Values.global.database.type | quote }}
   CLOUD_SERVICE_DATABASE_NAME: {{ .Values.global.database.cloudService.databaseName | quote }}
   CLOUD_SERVICE_DATABASE_SCHEMA: {{ .Values.global.database.cloudService.schema | quote }}
-  CLOUD_SERVICE_DATABASE_LOGGING: "false"
-  CLOUD_SERVICE_DATABASE_SYNCHRONIZE: "false"
-  CLOUD_SERVICE_LOG_LEVEL: "debug"
+  CLOUD_SERVICE_DATABASE_LOGGING: {{ .Values.global.database.log | quote }}
+  CLOUD_SERVICE_DATABASE_SYNCHRONIZE: {{ .Values.global.database.sync | quote }}
+  CLOUD_SERVICE_LOG_LEVEL: {{ .Values.logLevel | quote }}
