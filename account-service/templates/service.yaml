@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "account-service.fullname" . }}
+  namespace: {{ .Values.global.namespace.name }}
+  labels:
+    {{- include "account-service.labels" . | nindent 4 }}
+spec:
+  type: NodePort
+  ports:
+    - name: api
+      port: 3000
+      nodePort: {{ .Values.service.nodePorts.api }}
+    {{- if .Values.service.nodePorts.nodeJSDebug}}
+    - name: debug
+      port: 9229
+      nodePort: {{.Values.service.nodePorts.nodeJSDebug}}
+    {{- end }}
+  selector:
+    {{- include "account-service.selectorLabels" . | nindent 4 }}
