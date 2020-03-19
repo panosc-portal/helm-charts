@@ -4,9 +4,12 @@ dependencies:
   version: 0.1.0
 - name: panosc-postgres
   repository: https://panosc-portal.github.io/helm-charts/
-  version: 0.1.1
+  version: 0.1.2
 - name: cloud-service
   repository: https://panosc-portal.github.io/helm-charts/
   version: 0.1.0
-digest: sha256:2c02de6f51f8c6921249491e640d53df6ba8f5cf061ec9201ff48b5e3615fbb6
-generated: "2020-03-16T15:17:48.743227+01:00"
+- name: desktop-service
+  repository: https://panosc-portal.github.io/helm-charts/
+  version: 0.1.0
+digest: sha256:9818e4a2330613832065edefdf6c9a5a459ed7f5125c7733c240d26d31fd6595
+generated: "2020-03-19T13:00:29.657482+01:00"

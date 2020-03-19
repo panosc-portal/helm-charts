@@ -14,7 +14,7 @@ type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.1.1
+version: 0.1.2
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
@@ -25,8 +25,11 @@ dependencies:
     version: 0.1.0
     repository: https://panosc-portal.github.io/helm-charts/
   - name: panosc-postgres
-    version: 0.1.1
+    version: 0.1.2
     repository: https://panosc-portal.github.io/helm-charts/
   - name: cloud-service
+    version: 0.1.0
+    repository: https://panosc-portal.github.io/helm-charts/
+  - name: desktop-service
     version: 0.1.0
     repository: https://panosc-portal.github.io/helm-charts/

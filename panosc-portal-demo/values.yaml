@@ -46,6 +46,11 @@ global:
       password: cloud-service
       databaseName: cloud-service
       schema: cloud-service
+    desktopService:
+      username: desktop-service
+      password: desktop-service
+      databaseName: desktop-service
+      schema: desktop-service
 
   #imagePullSecrets: []
   #nameOverride: ""
