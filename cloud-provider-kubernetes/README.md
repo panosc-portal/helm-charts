@@ -44,6 +44,7 @@ image.registry| Define the registry where the CloudProviderKubernetes is stored 
 image.repository | CloudProviderKubernetes docker image | panosc/cloud-provider-kubernetes
 image.dockerTag | CloudProviderKubernetes docker tag |testing
 image.pullPolicy | Image pull policy | IfNotPresent
+kubernetesHost | Hostname of the kubernetes cluster |
 service.nodePorts.api | NodePort for the api | 32300
 service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 32401
 namespace.instances.creation | Boolean to create or not the instances namespace | true
