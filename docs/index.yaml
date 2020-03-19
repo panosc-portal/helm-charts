@@ -3,7 +3,7 @@ entries:
   account-service:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-19T13:09:27.411459+01:00"
+    created: "2020-03-19T14:15:04.473645+01:00"
     description: A Helm chart for Kubernetes
     digest: 90ba16e91cdbc2d3ffe247d81803f0088bc7e1197386e3b44f42bbba7376a3e5
     name: account-service
@@ -14,9 +14,9 @@ entries:
   cloud-provider-kubernetes:
   - apiVersion: v2
     appVersion: latest
-    created: "2020-03-19T13:09:27.415181+01:00"
+    created: "2020-03-19T14:15:04.474741+01:00"
     description: A Helm chart for Kubernetes
-    digest: c05bab428a91463c08653b24d7823fea73e448f566042aed56098478351312f4
+    digest: 9f977ad432642070c13ff4f42f7480a13b500751c35008ae05f431dd942cd4bc
     name: cloud-provider-kubernetes
     type: application
     urls:
@@ -25,9 +25,9 @@ entries:
   cloud-service:
   - apiVersion: v2
     appVersion: latest
-    created: "2020-03-19T13:09:27.416918+01:00"
+    created: "2020-03-19T14:15:04.475582+01:00"
     description: A Helm chart for Kubernetes
-    digest: a8529fe92e80ca3b29450728392312d3213a956ada931ddcdc1563c5e7b9765e
+    digest: ec7b77ebe120e576f367a50d7997b5f2cf5e21aa7f6c104843d5762ffa3874ac
     name: cloud-service
     type: application
     urls:
@@ -36,7 +36,7 @@ entries:
   desktop-service:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-19T13:09:27.417719+01:00"
+    created: "2020-03-19T14:15:04.476454+01:00"
     description: A Helm chart for Kubernetes
     digest: f51144524d23485ab0c910d44d645f360be128bb196bc4523a0026b8fad47893
     name: desktop-service
@@ -47,7 +47,7 @@ entries:
   panosc-portal:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-19T13:09:27.419475+01:00"
+    created: "2020-03-19T14:15:04.4788+01:00"
     dependencies:
     - name: cloud-provider-kubernetes
       repository: https://panosc-portal.github.io/helm-charts/
@@ -65,7 +65,7 @@ entries:
   panosc-portal-demo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-19T13:09:27.428106+01:00"
+    created: "2020-03-19T14:15:04.48518+01:00"
     dependencies:
     - name: cloud-provider-kubernetes
       repository: https://panosc-portal.github.io/helm-charts/
@@ -88,7 +88,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-19T13:09:27.424835+01:00"
+    created: "2020-03-19T14:15:04.482873+01:00"
     dependencies:
     - name: cloud-provider-kubernetes
       repository: https://panosc-portal.github.io/helm-charts/
@@ -108,7 +108,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-19T13:09:27.421409+01:00"
+    created: "2020-03-19T14:15:04.480626+01:00"
     dependencies:
     - name: cloud-provider-kubernetes
       repository: https://panosc-portal.github.io/helm-charts/
@@ -126,7 +126,7 @@ entries:
   panosc-postgres:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-19T13:09:27.432818+01:00"
+    created: "2020-03-19T14:15:04.489293+01:00"
     description: A Helm chart for Kubernetes
     digest: ba6d0e6b41e939e5c19381a38b44c52af46d32ad4587bd42c1a73e07bc934b36
     name: panosc-postgres
@@ -136,7 +136,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-19T13:09:27.431423+01:00"
+    created: "2020-03-19T14:15:04.487454+01:00"
     description: A Helm chart for Kubernetes
     digest: 3688755c6da1f1460d6285f160d5366ce570034c6428dda58e5164f1006adac3
     name: panosc-postgres
@@ -146,7 +146,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-03-19T13:09:27.429249+01:00"
+    created: "2020-03-19T14:15:04.486274+01:00"
     description: A Helm chart for Kubernetes
     digest: 96a611aa9f9adf031aee5262cd2dfa2cbca406ee93c3cd0509f0c1f6e962ff8b
     name: panosc-postgres
@@ -154,4 +154,4 @@ entries:
     urls:
     - https://panosc-portal.github.io/helm-charts/panosc-postgres-0.1.0.tgz
     version: 0.1.0
-generated: "2020-03-19T13:09:27.408815+01:00"
+generated: "2020-03-19T14:15:04.470179+01:00"

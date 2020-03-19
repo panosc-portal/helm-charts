@@ -42,6 +42,7 @@ Value | Definition | Default
 replicaCount | Number of CloudProviderKubernetes replica | 1
 image.registry| Define the registry where the CloudProviderKubernetes is stored | docker.io
 image.repository | CloudProviderKubernetes docker image | panosc/cloud-provider-kubernetes
+image.dockerTag | CloudProviderKubernetes docker tag |testing
 image.pullPolicy | Image pull policy | IfNotPresent
 service.nodePorts.api | NodePort for the api | 32300
 service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 32401

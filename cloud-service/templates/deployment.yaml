@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image:  "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          image:  "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.dockerTag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.service.nodePorts.nodeJSDebug }}
           command:
