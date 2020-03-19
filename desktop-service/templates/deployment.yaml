@@ -1,38 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "account-service.name" . }}
+  name: {{ include "desktop-service.name" . }}
   namespace: {{ .Values.global.namespace.name }}
   labels:
-    {{- include "account-service.labels" . | nindent 4 }}
+    {{- include "desktop-service.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "account-service.selectorLabels" . | nindent 6 }}
+      {{- include "desktop-service.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "account-service.selectorLabels" . | nindent 8 }}
+        {{- include "desktop-service.selectorLabels" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.dockerTag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.service.nodePorts.nodeJSDebug }}
-          command:
-            - "npm"
-            - "run"
-            - "debug"
-          {{- end }}
           ports:
             - name: api
-              containerPort: 3000
+              containerPort: 8085
+            - name: socket
+              containerPort: 8087
           envFrom:
             - configMapRef:
-                name: {{ include "account-service.name" . }}-config
-            - secretRef:
-                name: {{ include "account-service.name" . }}-secret
+                name: {{ include "desktop-service.name" . }}-config
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

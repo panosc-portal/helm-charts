@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "desktop-service.name" . }}
+  namespace: {{ .Values.global.namespace.name }}
+  labels:
+    {{- include "desktop-service.labels" . | nindent 4 }}
+spec:
+  type: NodePort
+  ports:
+      - name: api
+        port: 8085
+        nodePort: {{ .Values.service.nodePorts.api }}
+      - name: socket
+        port: 8087
+        nodePort: {{.Values.service.nodePorts.socket}}
+  selector:
+    {{- include "desktop-service.selectorLabels" . | nindent 4 }}

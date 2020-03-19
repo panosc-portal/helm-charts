@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "desktop-service.name" . }}-config
+  namespace: {{ .Values.global.namespace.name }}
+  labels:
+  {{- include "desktop-service.labels" . | nindent 4 }}
+data:
+  DESKTOP_SERVICE_DATABASE_USERNAME: {{ .Values.global.database.destopService.username}}
+  DESKTOP_SERVICE_DATABASE_PASSWORD: {{ .Values.global.database.destopService.password}}
+  {{- if eq .Values.global.database.type "postgres" }}
+  DESKTOP_SERVICE_DATABASE_URL: jdbc:postgresql://{{ .Values.global.database.host}}:5432/{{ .Values.global.database.destopService.databaseName}}?currentSchema={{ .Values.global.database.destopService.schema}}
+  {{- else }}
+  DESKTOP_SERVICE_DATABASE_URL: jdbc:{{.Values.global.database.type}}://{{ .Values.global.database.host}}:5432/{{ .Values.global.database.destopService.databaseName}}?currentSchema={{ .Values.global.database.destopService.schema}}
+  {{- end }}
+  DESKTOP_SERVICE_CLOUD_SERVICE_URL: http://cloud-service:3000/api/v1

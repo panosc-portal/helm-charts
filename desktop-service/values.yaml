@@ -6,16 +6,15 @@ replicaCount: 1
 
 image:
   registry: docker.io
-  repository: panosc/account-service
+  repository: panosc/desktop-service
   dockerTag: testing
   pullPolicy: IfNotPresent
 
-cloudServiceUrl: http://localhost:3001/api/v1
 
 service:
   nodePorts:
-    api : 32304
-    nodeJSDebug: 32405
+    api : 32302
+    socket: 32403
 
 nodeSelector: {}
 
@@ -31,12 +30,9 @@ resources: {}
   # limits:
   #   cpu: 100m
   #   memory: 128Mi
-# requests:
+  # requests:
 #   cpu: 100m
 #   memory: 128Mi
-
-
-logLevel: debug
 
 
 global:
@@ -45,16 +41,14 @@ global:
 
 
   database:
-    host:
+    host: panosc-postgres
     port: 5432
     type: postgres
-    log: false
-    sync: false
-    accountService:
-      username: account-service
-      password:
-      databaseName: account-service
-      schema: account-service
+    destopService:
+      username: desktop-service
+      password: desktop-service
+      databaseName: desktop-service
+      schema: desktop-service
 
 
   #imagePullSecrets: []

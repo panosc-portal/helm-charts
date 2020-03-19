@@ -46,13 +46,11 @@ image.dockerTag | accountService docker tag | testing
 image.pullPolicy | Image pull policy | IfNotPresent
 service.nodePorts.api | NodePort for the api | 32304
 service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 32405
-namespace.instances.creation | Boolean to create or not the instances namespace | true
-namespace.instances.name| Name of the instances namespace | panosc-instances 
 nodeSelector| Node labels for pod assignment| {}
 tolerations|Toleration labels for pod assignment| []
 affinity|Affinity labels for pod assignment|{}
-resources|Custom resource configuration for the CloudProviderKubernetes pod | {}
-logLevel| Log level of the CloudProviderKubernetes ( debug, info, warn, error | debug
+resources|Custom resource configuration for the accountService pod | {}
+logLevel| Log level of the accountService ( debug, info, warn, error | debug
 global.namespace.name | Name of namespace in witch the microservice will be installed (namespace must be already created) | default
 global.database.host| Database hostname | 
 global.database.port| Database port | 5432
