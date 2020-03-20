@@ -13,4 +13,7 @@ CREATE USER "desktop-service" WITH CREATEDB PASSWORD '${DESKTOP_SERVICE_DATABASE
 CREATE DATABASE "cloud-provider-kubernetes" OWNER "cloud-provider-kubernetes";
 CREATE DATABASE "cloud-service" OWNER "cloud-service";
 CREATE DATABASE "desktop-service" OWNER "desktop-service";
+CREATE SCHEMA "desktop-service";
+CREATE SCHEMA "cloud-service";
+CREATE SCHEMA "cloud-provider-kubernetes";
 EOSQL
