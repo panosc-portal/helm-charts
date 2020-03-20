@@ -20,3 +20,7 @@ CREATE SCHEMA "cloud-service";
 \connect "desktop-service" "desktop-service";
 CREATE SCHEMA "desktop-service";
 EOSQL
+
+$POSTGRES -d cloud-provider-kubernetes -a -f /tmp/cloud-provider-kubernetes.sql;
+$POSTGRES -d cloud-service -a -f /tmp/cloud-service.sql;
+$POSTGRES -d desktop-service -a -f /tmp/desktop-service.sql;
