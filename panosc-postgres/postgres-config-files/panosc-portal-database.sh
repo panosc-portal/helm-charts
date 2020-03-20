@@ -14,7 +14,3 @@ CREATE DATABASE "cloud-provider-kubernetes" OWNER "cloud-provider-kubernetes";
 CREATE DATABASE "cloud-service" OWNER "cloud-service";
 CREATE DATABASE "desktop-service" OWNER "desktop-service";
 EOSQL
-
-$POSTGRES -d cloud-provider-kubernetes -a -f /tmp/cloud-provider-kubernetes.sql;
-$POSTGRES -d cloud-service -a -f /tmp/cloud-service.sql;
-$POSTGRES -d desktop-service -a -f /tmp/desktop-service.sql;
