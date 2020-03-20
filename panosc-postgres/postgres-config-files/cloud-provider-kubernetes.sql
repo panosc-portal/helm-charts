@@ -299,8 +299,6 @@ CREATE TABLE "cloud-provider-kubernetes".instance_account (
     id integer NOT NULL,
     user_id integer NOT NULL,
     username character varying(100) NOT NULL,
-    first_name character varying(100),
-    last_name character varying(100),
     gid integer NOT NULL,
     uid integer NOT NULL,
     home_path character varying(250) NOT NULL,

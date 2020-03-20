@@ -220,8 +220,6 @@ ALTER SEQUENCE "cloud-service".provider_id_seq OWNED BY "cloud-service".provider
 
 CREATE TABLE "cloud-service".users (
     id integer NOT NULL,
-    first_name character varying(100),
-    last_name character varying(100) NOT NULL,
     email character varying(100)
 );
 
