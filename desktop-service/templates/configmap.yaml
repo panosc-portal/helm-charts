@@ -13,4 +13,6 @@ data:
   {{- else }}
   DESKTOP_SERVICE_DATABASE_URL: jdbc:{{.Values.global.database.type}}://{{ .Values.global.database.host}}:5432/{{ .Values.global.database.destopService.databaseName}}?currentSchema={{ .Values.global.database.destopService.schema}}
   {{- end }}
-  DESKTOP_SERVICE_CLOUD_SERVICE_URL: http://cloud-service:3000/api/v1
+  DESKTOP_SERVICE_CLOUD_SERVICE_URL: http://{{ .Values.global.cloudService.host }}:{{ .Values.global.cloudService.port }}/api/v1
+  DESKTOP_SERVICE_VDI_HOST: {{ .Values.webServerHost }}
+  DESKTOP_SERVICE_SERVER_HOST: {{ .Values.webServerHost }}

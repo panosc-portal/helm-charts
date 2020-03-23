@@ -1,10 +1,10 @@
-Account Service
+API Service
 ==========================
 
-The Account Service is a microservice that can be used to authenticate and authorise a user and return a User object with relevant attributes.  
-  
+The API Service is a microservice that provides a main point of entry to the application and facade to APIs of underlying micro services.
+
 # Install the Chart
-To install the Account Service chart add the panosc-portal repository to your helm client with the following command:
+To install the API Service chart add the panosc-portal repository to your helm client with the following command:
 ```
 helm repo add panosc-portal https://panosc-portal.github.io/helm-charts/
 ```
@@ -57,15 +57,10 @@ affinity|Affinity labels for pod assignment|{}
 resources|Custom resource configuration for the accountService pod | {}
 logLevel| Log level of the accountService ( debug, info, warn, error | debug
 global.namespace.name | Name of namespace in witch the microservice will be installed (namespace must be already created) | default
-global.database.host| Database hostname | 
-global.database.port| Database port | 5432
-global.database.type| Database type (oracle, postgres, mariadb ...) | postgres
-global.database.log| Boolean to activate or not database logs | false
-global.database.sync| Boolean to activate or not database synchronisation | false
-global.database.accountService.username| Username to access the accountService microservice database | account-service
-global.database.accountService.password| Password to access the accountService microservice database 
-global.database.accountService.databaseName| Database name for the accountService microservice | account-service
-global.database.accountService.schema| Database schema for the accountService microservice (if definable) | account-service
+global.accountService.host | Hostname of the accountService | account-service
+global.accountService.port | Port of the webApi for the accountService | 3000
+global.cloudService.host | Hostname of the apiService | api-service
+global.cloudService.port | Port of the webApi for the apiService | 3000
 
 
 # Use the service

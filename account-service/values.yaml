@@ -8,14 +8,20 @@ image:
   registry: docker.io
   repository: panosc/account-service
   dockerTag: testing
-  pullPolicy: IfNotPresent
-
-cloudServiceUrl: http://localhost:3001/api/v1
+  pullPolicy: Always
 
 service:
   nodePorts:
     api : 32304
     nodeJSDebug: 32405
+
+idp:
+  host:
+  clientId:
+  loginField:
+
+defaultRoleId: 1
+attributeProviderFile:
 
 nodeSelector: {}
 

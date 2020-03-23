@@ -447,7 +447,7 @@ SELECT pg_catalog.setval('"cloud-provider-kubernetes".flavour_id_seq', 3, true);
 -- Data for Name: image; Type: TABLE DATA; Schema: cloud-provider-kubernetes; Owner: cloud-provider-kubernetes
 --
 
-INSERT INTO "cloud-provider-kubernetes".image VALUES (1, 'ubuntu-xrdp', NULL, 'danielguerra/ubuntu-xrdp', 'REMOTE_DESKTOP', 'Ubuntu with XRDP service', '', '', NULL);
+INSERT INTO "cloud-provider-kubernetes".image VALUES (1, 'ubuntu-xrdp', NULL, 'panosc/remote-desktop-test-image', 'REMOTE_DESKTOP', 'Ubuntu with XRDP and GUACD service', '', '', NULL);
 INSERT INTO "cloud-provider-kubernetes".image VALUES (2, 'jupyter', NULL, 'jupyter/base-notebook', 'JUPYTER_NOTEBOOK', 'Jupyter base notebook', 'start.sh', 'jupyter,notebook,--NotebookApp.token=""', 0);
 
 
@@ -475,7 +475,7 @@ SELECT pg_catalog.setval('"cloud-provider-kubernetes".image_id_seq', 2, false);
 -- Data for Name: image_protocol; Type: TABLE DATA; Schema: cloud-provider-kubernetes; Owner: cloud-provider-kubernetes
 --
 
-INSERT INTO "cloud-provider-kubernetes".image_protocol VALUES (1, NULL, 2, 1);
+INSERT INTO "cloud-provider-kubernetes".image_protocol VALUES (1, NULL, 3, 1);
 INSERT INTO "cloud-provider-kubernetes".image_protocol VALUES (2, 8888, 4, 2);
 
 

@@ -41,10 +41,11 @@ helm uninstall my-release
 Value | Definition | Default
  ------------- | ------------- | ------------- | 
 replicaCount | Number of desktopService replica | 1
+webServerHost | Hostname of the WebServer (ie Apache, Nginx) | 
 image.registry| Define the registry where the desktopService is stored | docker.io
 image.repository | DesktopService docker image | panosc/desktop-service
 image.dockerTag | DesktopService docker tag | testing
-image.pullPolicy | Image pull policy | IfNotPresent
+image.pullPolicy | Image pull policy | Always
 service.nodePorts.api | NodePort for the api | 32302
 service.nodePorts.socket | NodePort for the web socket | 32403
 nodeSelector| Node labels for pod assignment| {}
@@ -61,3 +62,5 @@ global.database.cloudService.username| Username to access the desktopService mic
 global.database.cloudService.password| Password to access the desktopService microservice database 
 global.database.cloudService.databaseName| Database name for the desktopService microservice | desktop-service
 global.database.cloudService.schema| Database schema for the desktopService microservice (if definable) | desktop-service
+global.cloudService.host
+global.cloudService.port

@@ -8,7 +8,7 @@ image:
   registry: docker.io
   repository: panosc/cloud-provider-kubernetes
   dockerTag: testing
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 kubernetesHost:
 

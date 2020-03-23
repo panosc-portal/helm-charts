@@ -44,7 +44,7 @@ replicaCount | Number of CloudService replica | 1
 image.registry| Define the registry where the CloudService is stored | docker.io
 image.repository | CloudService docker image | panosc/cloud-service
 image.dockerTag | CloudService docker tag |testing
-image.pullPolicy | Image pull policy | IfNotPresent
+image.pullPolicy | Image pull policy | Always
 service.nodePorts.api | NodePort for the api | 32301
 service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 32402
 nodeSelector| Node labels for pod assignment| {}
