@@ -12,4 +12,4 @@ dependencies:
   repository: https://panosc-portal.github.io/helm-charts/
   version: 0.1.0
 digest: sha256:9818e4a2330613832065edefdf6c9a5a459ed7f5125c7733c240d26d31fd6595
-generated: "2020-03-20T12:10:56.100179+01:00"
+generated: "2020-03-23T17:22:30.942909+01:00"

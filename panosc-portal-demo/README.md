@@ -20,9 +20,9 @@ To install the PaNOSC Portal Demo chart, add the panosc-portal repository to you
 helm repo add panosc-portal https://panosc-portal.github.io/helm-charts/
 ```
 
-Then you can run the helm install command followed with the name you want to call it:
+Then you can run the helm install command followed by the ip or hostname of your host machine and the name you want to call it and :
 ```
-helm install <YourReleaseName> panosc-portal/panosc-portal-demo
+helm install <YourReleaseName> --set cloud-provider-kubernetes.kubernetesHost=<HostIP> panosc-portal/panosc-portal-demo 
 ```
 
 You can then find the kubernetes services and pods in the namespace panosc-portal.

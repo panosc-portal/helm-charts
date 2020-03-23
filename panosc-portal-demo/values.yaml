@@ -4,6 +4,8 @@
 
 replicaCount: 1
 
+desktop-service:
+  webServerHost: 0.0.0.0
 
 kubernetesRequestHelperFile:
 

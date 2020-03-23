@@ -264,6 +264,7 @@ CREATE TABLE "cloud-provider-kubernetes".instance_protocol (
     id integer NOT NULL,
     name character varying(250) NOT NULL,
     port integer NOT NULL,
+    internal_port integer,
     instance_id integer NOT NULL
 );
 
