@@ -36,7 +36,7 @@ SET default_with_oids = false;
 CREATE TABLE "cloud-service".authorisation_token (
     id integer NOT NULL,
     token character varying(250) NOT NULL,
-    created_at integer NOT NULL,
+    created_at bigint NOT NULL,
     instance_member_id integer NOT NULL
 );
 
