@@ -15,7 +15,7 @@ data:
   ACCOUNT_SERVICE_DATABASE_SYNCHRONIZE: {{ .Values.global.database.sync | quote }}
   ACCOUNT_SERVICE_LOG_LEVEL: {{ .Values.logLevel | quote }}
   ACCOUNT_SERVICE_IDP: {{ .Values.idp.host | quote }}
-  ACCOUNT_SERVICE_CLIENT_ID: {{ .Values.idp.clientID | quote }}
+  ACCOUNT_SERVICE_CLIENT_ID: {{ .Values.idp.clientId | quote }}
   ACCOUNT_SERVICE_LOGIN_FIELD: {{ .Values.idp.loginField | quote }}
   ACCOUNT_SERVICE_DEFAULT_ROLE_ID: {{ .Values.defaultRoleId | quote}}
-  ACCOUNT_SERVICE_ATTRIBUTE_PROVIDER: {{.Values.attributeProviderFile }}
+  ACCOUNT_SERVICE_ATTRIBUTE_PROVIDER: "/home/node/app/attribute/attributes-config.js"

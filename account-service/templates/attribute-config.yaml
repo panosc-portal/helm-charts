@@ -1,0 +1,12 @@
+{{- if  .Values.attributeProviderFile }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "account-service.name" . }}-attribute-config
+  namespace: {{ .Values.global.namespace.name }}
+  labels:
+  {{- include "account-service.labels" . | nindent 4 }}
+data:
+  attribute-config.js: |-
+{{ .Values.attributeProviderFile | indent 4 }}
+{{ end }}

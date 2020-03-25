@@ -10,10 +10,7 @@ image:
   dockerTag: testing
   pullPolicy: Always
 
-service:
-  nodePorts:
-    api : 32304
-    nodeJSDebug: 32405
+
 
 idp:
   host:

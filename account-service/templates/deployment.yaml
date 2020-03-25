@@ -33,8 +33,19 @@ spec:
                 name: {{ include "account-service.name" . }}-config
             - secretRef:
                 name: {{ include "account-service.name" . }}-secret
+          volumeMounts:
+            {{- if .Values.attributeProviderFile }}
+              - mountPath: /home/node/app/attribute
+                name: attribute
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        {{- if .Values.attributeProviderFile }}
+        - name: attribute
+          configMap:
+            name: {{ include "account-service.name" . }}-attribute-config
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
