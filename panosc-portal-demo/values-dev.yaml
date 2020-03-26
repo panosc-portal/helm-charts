@@ -7,16 +7,14 @@ replicaCount: 1
 account-service:
   attributeProviderFile:
   idp:
-    host:
-    clientId:
-    loginField:
+    host: https://logindev.ill.fr/auth/realms/ILL/.well-known/openid-configuration
+    clientId: visadev
+    loginField: preferred_username
   service:
     nodePorts:
       api: 32304
       nodeJSDebug: 32405
 
-desktop-service:
-  webServerHost: 0.0.0.0
 
 kubernetesRequestHelperFile:
 
@@ -42,6 +40,16 @@ resources: {}
 
 
 logLevel: debug
+
+cloud-provider-kubernetes:
+  kubernetesHost: 192.168.1.56
+
+
+desktop-service:
+  service:
+    nodePorts:
+      socket: 32403
+  webServerHost: 0.0.0.0
 
 apache:
   vhostsConfigMap: panosc-portal-demo-vhosts

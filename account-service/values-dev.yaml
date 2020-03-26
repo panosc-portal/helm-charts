@@ -4,23 +4,24 @@
 
 replicaCount: 1
 
-account-service:
-  attributeProviderFile:
-  idp:
-    host:
-    clientId:
-    loginField:
-  service:
-    nodePorts:
-      api: 32304
-      nodeJSDebug: 32405
+image:
+  registry: docker.io
+  repository: panosc/account-service
+  dockerTag: testing
+  pullPolicy: Always
 
-desktop-service:
-  webServerHost: 0.0.0.0
 
-kubernetesRequestHelperFile:
+idp:
+  host: https://logindev.ill.fr/auth/realms/ILL/.well-known/openid-configuration
+  clientId: visadev
+  loginField: preferred_username
 
-dockerSecretFile:
+defaultRoleId: 1
+
+service:
+  nodePorts:
+    api : 32304
+    nodeJSDebug: 32405
 
 nodeSelector: {}
 
@@ -36,42 +37,31 @@ resources: {}
   # limits:
   #   cpu: 100m
   #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
+# requests:
+#   cpu: 100m
 #   memory: 128Mi
 
 
 logLevel: debug
 
-apache:
-  vhostsConfigMap: panosc-portal-demo-vhosts
 
 global:
   namespace:
-    creation: true
-    name: panosc-portal
+    name: default
+
 
   database:
-    cloudProviderKubernetes:
-      username: cloud-provider-kubernetes
-      password: cloud-provider-kubernetes
-      databaseName: cloud-provider-kubernetes
-      schema: cloud-provider-kubernetes
-    cloudService:
-      username: cloud-service
-      password: cloud-service
-      databaseName: cloud-service
-      schema: cloud-service
-    desktopService:
-      username: desktop-service
-      password: desktop-service
-      databaseName: desktop-service
-      schema: desktop-service
+    host: panosc-postgres
+    port: 5432
+    type: postgres
+    log: true
+    sync: true
     accountService:
       username: account-service
       password: account-service
       databaseName: account-service
       schema: account-service
+
 
   #imagePullSecrets: []
   #nameOverride: ""
@@ -111,6 +101,7 @@ global:
 #  #  - secretName: chart-example-tls
 #  #    hosts:
 #  #      - chart-example.local
+
 
 
 

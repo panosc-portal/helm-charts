@@ -4,19 +4,15 @@
 
 replicaCount: 1
 
-account-service:
-  attributeProviderFile:
-  idp:
-    host:
-    clientId:
-    loginField:
-  service:
-    nodePorts:
-      api: 32304
-      nodeJSDebug: 32405
+image:
+  registry: docker.io
+  repository: postgres
+  dockerTag: 12
+  pullPolicy: IfNotPresent
 
-desktop-service:
-  webServerHost: 0.0.0.0
+service:
+  nodePorts:
+    database: 32400
 
 kubernetesRequestHelperFile:
 
@@ -38,18 +34,11 @@ resources: {}
   #   memory: 128Mi
   # requests:
   #   cpu: 100m
-#   memory: 128Mi
-
-
-logLevel: debug
-
-apache:
-  vhostsConfigMap: panosc-portal-demo-vhosts
+  #   memory: 128Mi
 
 global:
   namespace:
-    creation: true
-    name: panosc-portal
+    name: default
 
   database:
     cloudProviderKubernetes:
@@ -73,23 +62,23 @@ global:
       databaseName: account-service
       schema: account-service
 
-  #imagePullSecrets: []
-  #nameOverride: ""
-  #fullnameOverride: ""
+#imagePullSecrets: []
+#nameOverride: ""
+#fullnameOverride: ""
 
-  #serviceAccount:
-  #  # Specifies whether a service account should be created
-  #  create: true
-  #  # Annotations to add to the service account
-  #  annotations: {}
-  #  # The name of the service account to use.
-  #  # If not set and create is true, a name is generated using the fullname template
-  #  name:
+#serviceAccount:
+#  # Specifies whether a service account should be created
+#  create: true
+#  # Annotations to add to the service account
+#  annotations: {}
+#  # The name of the service account to use.
+#  # If not set and create is true, a name is generated using the fullname template
+#  name:
 
-  #podSecurityContext: {}
+#podSecurityContext: {}
   # fsGroup: 2000
 
-  #securityContext: {}
+#securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -111,6 +100,7 @@ global:
 #  #  - secretName: chart-example-tls
 #  #    hosts:
 #  #      - chart-example.local
+
 
 
 

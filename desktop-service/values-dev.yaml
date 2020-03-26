@@ -4,23 +4,17 @@
 
 replicaCount: 1
 
-account-service:
-  attributeProviderFile:
-  idp:
-    host:
-    clientId:
-    loginField:
-  service:
-    nodePorts:
-      api: 32304
-      nodeJSDebug: 32405
+image:
+  registry: docker.io
+  repository: panosc/desktop-service
+  dockerTag: testing
+  pullPolicy: Always
 
-desktop-service:
-  webServerHost: 0.0.0.0
-
-kubernetesRequestHelperFile:
-
-dockerSecretFile:
+webServerHost: 0.0.0.0
+service:
+  nodePorts:
+    api : 32302
+    socket: 32403
 
 nodeSelector: {}
 
@@ -36,42 +30,31 @@ resources: {}
   # limits:
   #   cpu: 100m
   #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
+# requests:
+#   cpu: 100m
 #   memory: 128Mi
 
 
 logLevel: debug
 
-apache:
-  vhostsConfigMap: panosc-portal-demo-vhosts
 
 global:
   namespace:
-    creation: true
     name: panosc-portal
 
+
   database:
-    cloudProviderKubernetes:
-      username: cloud-provider-kubernetes
-      password: cloud-provider-kubernetes
-      databaseName: cloud-provider-kubernetes
-      schema: cloud-provider-kubernetes
-    cloudService:
-      username: cloud-service
-      password: cloud-service
-      databaseName: cloud-service
-      schema: cloud-service
-    desktopService:
-      username: desktop-service
-      password: desktop-service
-      databaseName: desktop-service
+    host: panosc-db-dev.ill.fr
+    port: 5432
+    type: postgresql
+    log: false
+    sync: false
+    destopService:
+      username: panosc-dev
+      password: panosc-dev
+      databaseName: panosc-dev
       schema: desktop-service
-    accountService:
-      username: account-service
-      password: account-service
-      databaseName: account-service
-      schema: account-service
+
 
   #imagePullSecrets: []
   #nameOverride: ""
@@ -111,6 +94,7 @@ global:
 #  #  - secretName: chart-example-tls
 #  #    hosts:
 #  #      - chart-example.local
+
 
 
 
