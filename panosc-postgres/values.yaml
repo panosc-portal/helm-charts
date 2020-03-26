@@ -40,17 +40,6 @@ global:
   namespace:
     name: panosc-portal
 
-  database:
-    cloudProviderKubernetes:
-      username: cloud-provider-kubernetes
-      password:
-      databaseName: cloud-provider-kubernetes
-      schema: cloud-provider-kubernetes
-    cloudService:
-      username: cloud-service
-      password:
-      databaseName: cloud-service
-      schema: cloud-service
 
 
 #imagePullSecrets: []
