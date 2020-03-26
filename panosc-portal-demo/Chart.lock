@@ -19,6 +19,6 @@ dependencies:
   version: 0.1.0
 - name: apache
   repository: https://charts.bitnami.com/bitnami
-  version: 7.0.0
-digest: sha256:4125e66116668fea5be5d9757fa5b1a9c457c4daa433dddf2ceefa3a06171555
-generated: "2020-03-26T10:17:48.310177+01:00"
+  version: 7.3.11
+digest: sha256:3e628af50190c83ab5be2fd9ad6a19e9ef0e3a65c9c65fac8428d4dd2fa523a7
+generated: "2020-03-26T18:44:53.296694+01:00"
