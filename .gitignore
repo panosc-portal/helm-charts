@@ -7,3 +7,5 @@ logs
 .workspace
 
 git_repos
+/panosc-portal-demo/values-dev.yaml
+/account-service/values-dev.yaml
