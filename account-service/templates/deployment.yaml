@@ -34,7 +34,7 @@ spec:
             - secretRef:
                 name: {{ include "account-service.name" . }}-secret
           volumeMounts:
-            {{- if .Values.idp.attributeProviderFile }}
+            {{- if or .Values.idp.attributeProviderFile .Values.idp.attributeProviderConfigMap }}
               - mountPath: /home/node/app/attribute
                 name: attribute
             {{- end }}
