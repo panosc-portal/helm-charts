@@ -6,7 +6,7 @@ metadata:
   labels:
   {{- include "desktop-service.labels" . | nindent 4 }}
 data:
-  DESKTOP_SERVICE_DATABASE_USERNAME: {{ .Values.global.database.destopService.username}}
+  DESKTOP_SERVICE_DATABASE_USERNAME: {{ .Values.global.database.desktopService.username}}
   DESKTOP_SERVICE_DATABASE_PASSWORD: {{ .Values.global.database.desktopService.password}}
   {{- if eq .Values.global.database.type "postgres" }}
   DESKTOP_SERVICE_DATABASE_URL: jdbc:postgresql://{{ .Values.global.database.host}}:5432/{{ .Values.global.database.desktopService.databaseName}}?currentSchema={{ .Values.global.database.desktopService.schema}}
