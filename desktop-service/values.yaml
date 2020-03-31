@@ -41,7 +41,7 @@ global:
     host:
     port: 5432
     type: postgres
-    destopService:
+    desktopService:
       username: desktop-service
       password:
       databaseName: desktop-service
