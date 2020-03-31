@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "desktop-service-web-test-client.name" . }}
+  labels:
+    {{- include "desktop-service-web-test-client.labels" . | nindent 4 }}
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      name: http
+  selector:
+    {{- include "desktop-service-web-test-client.selectorLabels" . | nindent 4 }}
