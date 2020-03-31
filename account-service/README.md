@@ -63,6 +63,7 @@ idp.url | URL to the OpenID discovery endpoint (eg https://server.com/.well-know
 idp.clientId | Client id referenced in your Identity Provider to use for the Account Service |
 idp.loginField | Field in your Identity Provider used for login |
 idp.attributeProviderFile | File containing attribute for the Identity Provider
+idp.attributeProviderConfigMap | ConfigMap name containing attribute for the Identity Provider
 defaultRoleId | Id of the role used for the default user | 1
 nodeSelector| Node labels for pod assignment| {}
 tolerations|Toleration labels for pod assignment| []

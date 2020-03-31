@@ -34,18 +34,22 @@ spec:
             - secretRef:
                 name: {{ include "account-service.name" . }}-secret
           volumeMounts:
-            {{- if .Values.attributeProviderFile }}
+            {{- if .Values.idp.attributeProviderFile }}
               - mountPath: /home/node/app/attribute
                 name: attribute
             {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
-        {{- if .Values.attributeProviderFile }}
+        {{- if .Values.idp.attributeProviderConfigMap }}
+        - name: attribute
+          configMap:
+            name: {{ .Values.idp.attributeProviderConfigMap }}
+        {{- else if .Values.idp.attributeProviderFile }}
         - name: attribute
           configMap:
             name: {{ include "account-service.name" . }}-attribute-config
-      {{- end }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

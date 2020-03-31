@@ -16,9 +16,11 @@ idp:
   url:
   clientId:
   loginField:
+  attributeProviderFile:
+  attributeProviderConfigMap:
 
 defaultRoleId: 1
-attributeProviderFile:
+
 
 service:
   nodePorts:

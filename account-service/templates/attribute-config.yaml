@@ -1,4 +1,4 @@
-{{- if  .Values.attributeProviderFile }}
+{{- if and .Values.idp.attributeProviderFile  (not .Values.idp.attributeProviderConfigMap) }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -8,5 +8,5 @@ metadata:
   {{- include "account-service.labels" . | nindent 4 }}
 data:
   attribute-config.js: |-
-{{ .Values.attributeProviderFile | indent 4 }}
+{{ .Values.idp.attributeProviderFile | indent 4 }}
 {{ end }}
