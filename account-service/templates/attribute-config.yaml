@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "account-service.name" . }}-attribute-config
-  namespace: {{ .Values.global.namespace.name }}
+  namespace: {{ .Release.Namespace }}
   labels:
   {{- include "account-service.labels" . | nindent 4 }}
 data:

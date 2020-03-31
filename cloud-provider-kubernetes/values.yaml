@@ -10,12 +10,12 @@ image:
   dockerTag: testing
   pullPolicy: Always
 
-kubernetesHost:
+kubernetesMasterHostname:
 
 service:
   nodePorts:
     api : 32300
-    nodeJSDebug: 32401
+    nodeJSDebug:
 
 namespace:
   instances:
@@ -49,12 +49,8 @@ logLevel: debug
 
 
 global:
-  namespace:
-      name: default
-
-
   database:
-    host: panosc-postgres
+    host:
     port: 5432
     type: postgres
     log: false

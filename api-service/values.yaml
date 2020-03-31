@@ -13,7 +13,7 @@ image:
 service:
   nodePorts:
     api : 32305
-    nodeJSDebug: 32406
+    nodeJSDebug:
 
 nodeSelector: {}
 
@@ -33,11 +33,7 @@ resources: {}
 #   cpu: 100m
 #   memory: 128Mi
 
-
 global:
-  namespace:
-    name: default
-
   accountService:
     host: account-service
     port: 3000

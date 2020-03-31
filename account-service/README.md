@@ -9,13 +9,22 @@ To install the Account Service chart add the panosc-portal repository to your he
 helm repo add panosc-portal https://panosc-portal.github.io/helm-charts/
 ```
 
-Then you will have set the database hostname, type, user and password by copying and modifying the values.yaml file and enter the following command:
+Then you will have set the database hostname, type (if not postgres) , user and password by copying and modifying the values.yaml file and enter the following command:
 ```
-helm install -f myvalues.yaml my-release panosc-portal/account-service
+helm install my-release panosc-portal/account-service \
+-f myvalues.yaml -n <existantNamespace>
 ```
 or by setting the values that you want to modify with the flag --set:
 ```
-helm install --set global.database.host=database.panosc.eu  --set global.database.accountService.username=test --set global.database.accountService.password=password my-release panosc-portal/account-service
+helm install my-release panosc-portal/account-service \
+--set global.database.host=database.panosc.eu \
+--set global.database.type=mariadb \
+--set global.database.accountService.username=test \
+--set global.database.accountService.password=password \
+--set idp.url=https://server.com/.well-known/openid-configuration \
+--set idp.clientId=panosc
+--set idp.attributeProviderFile=path/to/attributeProvider
+-n <existantNamespace>
 ```
 
 # Upgrade the Chart
@@ -23,17 +32,21 @@ After installing the chart, you can upgrade it to a new version or, change your 
 
 You can ether specify a value file with the flag "-f" followed by the name or URL of the value file :
 ```
-helm upgrade -f myvalues.yaml my-release panosc-portal/account-service
+helm upgrade my-release panosc-portal/account-service \
+ -f myvalues.yaml -n <releaseNamespace>
 ```
 or specify the values that you want to modify with the flag --set:
 ```
-helm upgrade --set panoscPortal.namespace=panosc-portal --set cloudProviderKubernetes.instancesNamespace=panosc-instances my-release panosc-portal/account-service
+helm upgrade my-release panosc-portal/account-service \
+--set \
+-n <releaseNamespace>
+
 ```
 See (https://helm.sh/docs/helm/helm_upgrade/) for more information
 
 # Uninstall the Chart
 ```
-helm uninstall my-release
+helm uninstall my-release --namespace <releaseNamespace>
 ```
 
 # Chart values
@@ -45,8 +58,8 @@ image.repository | accountService docker image | panosc/account-service
 image.dockerTag | accountService docker tag | testing
 image.pullPolicy | Image pull policy | Always
 service.nodePorts.api | NodePort for the api | 32304
-service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 32405
-idp.host | Hostname of your Identity Provider |
+service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 
+idp.url | URL to the OpenID discovery endpoint (eg https://server.com/.well-known/openid-configuration) |
 idp.clientId | Client id referenced in your Identity Provider to use for the Account Service |
 idp.loginField | Field in your Identity Provider used for login |
 idp.attributeProviderFile | File containing attribute for the Identity Provider
@@ -56,7 +69,6 @@ tolerations|Toleration labels for pod assignment| []
 affinity|Affinity labels for pod assignment|{}
 resources|Custom resource configuration for the accountService pod | {}
 logLevel| Log level of the accountService ( debug, info, warn, error | debug
-global.namespace.name | Name of namespace in witch the microservice will be installed (namespace must be already created) | default
 global.database.host| Database hostname | 
 global.database.port| Database port | 5432
 global.database.type| Database type (oracle, postgres, mariadb ...) | postgres

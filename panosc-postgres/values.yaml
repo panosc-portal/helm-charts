@@ -36,10 +36,6 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-global:
-  namespace:
-    name: panosc-portal
-
 
 
 #imagePullSecrets: []

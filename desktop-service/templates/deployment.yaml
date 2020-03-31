@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "desktop-service.name" . }}
-  namespace: {{ .Values.global.namespace.name }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "desktop-service.labels" . | nindent 4 }}
 spec:

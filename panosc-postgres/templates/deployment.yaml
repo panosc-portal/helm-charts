@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "panosc-postgres.name" . }}
-  namespace: {{.Values.global.namespace.name}}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "panosc-postgres.labels" . | nindent 4 }}
 spec:

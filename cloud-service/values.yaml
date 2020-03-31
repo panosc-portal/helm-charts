@@ -13,7 +13,7 @@ image:
 service:
   nodePorts:
     api : 32301
-    nodeJSDebug: 32402
+    nodeJSDebug:
 
 kubernetesRequestHelperFile:
 
@@ -42,12 +42,8 @@ logLevel: debug
 
 
 global:
-  namespace:
-    name: default
-
-
   database:
-    host: panosc-postgres
+    host:
     port: 5432
     type: postgres
     log: false

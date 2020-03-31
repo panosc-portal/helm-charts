@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "cloud-provider-kubernetes.name" . }}
-  namespace: {{ .Values.global.namespace.name }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "cloud-provider-kubernetes.labels" . | nindent 4 }}
 spec:

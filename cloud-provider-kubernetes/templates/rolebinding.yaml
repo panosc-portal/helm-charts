@@ -11,4 +11,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: cloud-provider-kubernetes-sa
-    namespace: {{ .Values.global.namespace.name }}
+    namespace: {{ .Release.Namespace }}

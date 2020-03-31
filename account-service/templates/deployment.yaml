@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "account-service.name" . }}
-  namespace: {{ .Values.global.namespace.name }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "account-service.labels" . | nindent 4 }}
 spec:

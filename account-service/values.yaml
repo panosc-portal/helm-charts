@@ -13,12 +13,17 @@ image:
 
 
 idp:
-  host:
+  url:
   clientId:
   loginField:
 
 defaultRoleId: 1
 attributeProviderFile:
+
+service:
+  nodePorts:
+    api : 32304
+    nodeJSDebug:
 
 nodeSelector: {}
 
@@ -43,10 +48,6 @@ logLevel: debug
 
 
 global:
-  namespace:
-    name: default
-
-
   database:
     host:
     port: 5432

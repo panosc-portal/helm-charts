@@ -9,3 +9,6 @@ logs
 git_repos
 /panosc-portal-demo/values-dev.yaml
 /account-service/values-dev.yaml
+/desktop-service/values-dev.yaml
+/cloud-provider-kubernetes/values-dev.yaml
+/cloud-service/values-dev.yaml

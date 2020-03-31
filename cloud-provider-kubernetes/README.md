@@ -9,13 +9,19 @@ To install the Cloud Provider Kubernetes chart add the panosc-portal repository 
 helm repo add panosc-portal https://panosc-portal.github.io/helm-charts/
 ```
 
-Then you will have set the database hostname, type, user and password by copying and modifying the values.yaml file and enter the following command:
+Then you will have set the database hostname, type(if not postgres), user, password and the kubernetes master node hostname by copying and modifying the values.yaml file and enter the following command:
 ```
-helm install -f myvalues.yaml my-release panosc-portal/cloud-provider-kubernetes
+helm install my-release panosc-portal/cloud-provider-kubernetes \
+-f myvalues.yaml -n <existantNamespace>
 ```
 or by setting the values that you want to modify with the flag --set:
 ```
-helm install --set global.database.host=database.panosc.eu  --set global.database.cloudProviderKubernetes.username=test --set global.database.cloudProviderKubernetes.password=password my-release panosc-portal/cloud-provider-kubernetes
+helm install my-release panosc-portal/cloud-provider-kubernetes \
+--set global.database.host=database.panosc.eu \
+--set global.database.cloudPoviderKubernetes.username=test \
+--set global.database.cloudPoviderKubernetes.password=password \
+--set kubernetesMasterHostname=k8smaster.panosc.eu \
+-n <existantNamespace>
 ```
 
 # Upgrade the Chart
@@ -23,17 +29,21 @@ After installing the chart, you can upgrade it to a new version or, change your 
 
 You can ether specify a value file with the flag "-f" followed by the name or URL of the value file :
 ```
-helm upgrade -f myvalues.yaml my-release panosc-portal/cloud-provider-kubernetes
+helm upgrade my-release panosc-portal/cloud-provider-kubernetes \
+ -f myvalues.yaml -n <releaseNamespace>
 ```
 or specify the values that you want to modify with the flag --set:
 ```
-helm upgrade --set panoscPortal.namespace=panosc-portal --set cloudProviderKubernetes.instancesNamespace=panosc-instances my-release panosc-portal/cloud-provider-kubernetes
+helm upgrade my-release panosc-portal/cloud-provider-kubernetes \
+--set kubernetesMasterHostname=newMaster.panosc.eu\
+-n <releaseNamespace>
+
 ```
 See (https://helm.sh/docs/helm/helm_upgrade/) for more information
 
 # Uninstall the Chart
 ```
-helm uninstall my-release
+helm uninstall my-release --namespace <releaseNamespace>
 ```
 
 # Chart values
@@ -44,9 +54,9 @@ image.registry| Define the registry where the CloudProviderKubernetes is stored 
 image.repository | CloudProviderKubernetes docker image | panosc/cloud-provider-kubernetes
 image.dockerTag | CloudProviderKubernetes docker tag |testing
 image.pullPolicy | Image pull policy | Always
-kubernetesHost | Hostname of the kubernetes cluster |
+kubernetesMasterHostname | Hostname or ip of the kubernetes master node |
 service.nodePorts.api | NodePort for the api | 32300
-service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 32401
+service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 
 namespace.instances.creation | Boolean to create or not the instances namespace | true
 namespace.instances.name| Name of the instances namespace | panosc-instances 
 kubernetesRequestHelperFile | Content of a file containing a  kubernetes request helper (via --set-file) |
@@ -57,7 +67,7 @@ affinity|Affinity labels for pod assignment|{}
 resources|Custom resource configuration for the CloudProviderKubernetes pod | {}
 logLevel| Log level of the CloudProviderKubernetes ( debug, info, warn, error | debug
 global.namespace.name | Name of namespace in witch the microservice will be installed (namespace must be already created) | default
-global.database.host| Database hostname | panosc-postgres
+global.database.host| Database hostname | 
 global.database.port| Database port | 5432
 global.database.type| Database type (oracle, postgres, mariadb ...) | postgres
 global.database.log| Boolean to activate or not database logs | false
@@ -99,7 +109,7 @@ and the protocol used on that instance with the exposed port number.
 See the database model in the confluence documentation https://confluence.panosc.eu/display/wp4/Common+Portal+-+Cloud+Provider
 
 # Kubernetes request helper file 
-The Kubernetes request helper is a file where you can define methods to  add specific volumes or environment variables to an instance that cannot be defined in the database (example user home path).
+The Kubernetes request helper is a file where you can define methods to add specific volumes or environment variables to an instance that cannot be defined in the database (example user home path).
 For this, you need to create a file that has a getVolumes and getEnvsVars function that will return the necessary volume and environment variable for a specific image.
 [see example file](k8s-request-helper-example.js)<br/>
 Then use the parameter --set-file cloudProviderKubernetes.kubernetesRequestHelperFile=PathToFile while installing or upgrading the helm chart.

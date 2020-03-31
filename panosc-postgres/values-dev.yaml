@@ -37,9 +37,6 @@ resources: {}
   #   memory: 128Mi
 
 global:
-  namespace:
-    name: default
-
   database:
     cloudProviderKubernetes:
       username: cloud-provider-kubernetes

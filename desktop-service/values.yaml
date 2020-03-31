@@ -37,17 +37,13 @@ resources: {}
 
 
 global:
-  namespace:
-    name: default
-
-
   database:
-    host: panosc-postgres
+    host:
     port: 5432
     type: postgres
     destopService:
       username: desktop-service
-      password: desktop-service
+      password:
       databaseName: desktop-service
       schema: desktop-service
 
