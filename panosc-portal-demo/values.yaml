@@ -44,6 +44,10 @@ logLevel: debug
 
 apache:
   vhostsConfigMap: panosc-portal-demo-vhosts
+  service:
+    type: NodePort
+    nodePorts:
+      http: 32306
 
 global:
   database:

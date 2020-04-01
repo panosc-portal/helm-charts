@@ -64,34 +64,34 @@ You can then use the following commands to:
 
 - Add a user instance:
 ```
-bin/run user-instance:add -u http://<KubernetesMasterNode>/portal
+bin/run user-instance:add -u http://<KubernetesMasterNode>:32306/portal
 ```
 
 - List user instances:
 ```
-bin/run user-instance:list -u http://<KubernetesMasterNode>/portal
+bin/run user-instance:list -u http://<KubernetesMasterNode>:32306/portal
 ```
 
 - Get a user instance:
 ```
-bin/run user-instance:get -u http://<KubernetesMasterNode>/portal
+bin/run user-instance:get -u http://<KubernetesMasterNode>:32306/portal
 ```
 
 - Stop/start/reboot a user instance:
 ```
-bin/run user-instance:stop -u http://<KubernetesMasterNode>/portal
-bin/run user-instance:start -u http://<KubernetesMasterNode>/portal
-bin/run user-instance:reboot -u http://<KubernetesMasterNode>/portal
+bin/run user-instance:stop -u http://<KubernetesMasterNode>:32306/portal
+bin/run user-instance:start -u http://<KubernetesMasterNode>:32306/portal
+bin/run user-instance:reboot -u http://<KubernetesMasterNode>:32306/portal
 ```
 
 - Delete a user instance:
 ```
-bin/run user-instance:delete -u http://<KubernetesMasterNode>/portal
+bin/run user-instance:delete -u http://<KubernetesMasterNode>:32306/portal
 ```
 
 - Generate a user instance access token:
 ```
-bin/run user-instance:token -u http://<KubernetesMasterNode>/portal
+bin/run user-instance:token -u http://<KubernetesMasterNode>:32306/portal
 ```
 
 
@@ -100,7 +100,7 @@ bin/run user-instance:token -u http://<KubernetesMasterNode>/portal
 #### Remote Desktop
 When the instance is in an active state you can access it with the following url :
 ```
-http://<KubernetesMasterNode>/desktop/app/instances/{instanceId}?token={token}
+http://<KubernetesMasterNode>:32306/desktop/app/instances/{instanceId}?token={token}
 ```
 You can get the instance id with the 'add' or 'list' command and create a access token with the 'token' command 
 
