@@ -8,11 +8,11 @@ cloud-provider-kubernetes:
   kubernetesMasterHostname:
 
 account-service:
-  attributeProviderConfigMap: panosc-portal-demo-attribute
   idp:
     url:
     clientId:
     loginField:
+    attributeProviderConfigMap: panosc-portal-demo-attribute
 
 desktop-service:
   webServerHost: 0.0.0.0
@@ -47,7 +47,7 @@ apache:
 
 global:
   database:
-    host:
+    host: panosc-postgres
     cloudProviderKubernetes:
       username: cloud-provider-kubernetes
       password: cloud-provider-kubernetes

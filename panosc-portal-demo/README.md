@@ -34,7 +34,7 @@ helm install <YourReleaseName> panosc-portal/panosc-portal-demo \
 --set account-service.idp.url=https://server.com/.well-known/openid-configuration \
 --set account-service.idp.clientId=panosc \
 --set account-service.idp.loginField=user \
---n panosc-portal
+-n panosc-portal
 ```
 
 
