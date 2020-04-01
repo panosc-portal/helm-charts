@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "api-service.labels" . | nindent 4 }}
 data:
-  API_SERVICE_ACCOUNT_SERVICE_HOST: {{ ".Values.global.account-service.host" }}
-  API_SERVICE_ACCOUNT_SERVICE_PORT: {{ ".Values.global.account-service.port" }}
-  API_SERVICE_CLOUD_SERVICE_HOST: {{ ".Values.global.api-service.port" }}
-  API_SERVICE_CLOUD_SERVICE_PORT: {{ ".Values.global.api-service.port" }}
+  API_SERVICE_ACCOUNT_SERVICE_HOST: {{ .Values.global.accountService.host }}
+  API_SERVICE_ACCOUNT_SERVICE_PORT: {{ .Values.global.accountService.port }}
+  API_SERVICE_CLOUD_SERVICE_HOST: {{ .Values.global.cloudService.host }}
+  API_SERVICE_CLOUD_SERVICE_PORT: {{ .Values.global.cloudService.port }}
