@@ -9,6 +9,7 @@ The whole architecture of the portal is documented at the following address: htt
 
 ## Requirements :
 - A kubernetes cluster with Helm 3 (see https://helm.sh/docs/intro/install/)
+- A identity provider that uses OpenID Connect
 
 Note: Instead of deploying a kubernetes cluster, you can use docker desktop on Mac or Windows. 
 In that case, you have to use your localhost IP address for all connection to a container
@@ -20,19 +21,91 @@ To install the PaNOSC Portal Demo chart, add the panosc-portal repository to you
 helm repo add panosc-portal https://panosc-portal.github.io/helm-charts/
 ```
 
-Then you can run the helm install command followed by the ip or hostname of your host machine and the name you want to call it and :
+Then you can run the helm install command followed by: 
+- The hostname of your Kubernetes mater node
+- The URL to the OpenID discovery endpoint of your IDP
+- The Client ID configured in your OpenID provider 
+- The attribute name in your IDP providing that is used for login 
+
+You can also specify a existent namespace with the flag -n if you dont want to install the cart in the default namespce
 ```
-helm install <YourReleaseName> --set cloud-provider-kubernetes.kubernetesHost=<HostIP> panosc-portal/panosc-portal-demo 
+helm install <YourReleaseName> panosc-portal/panosc-portal-demo \
+--set cloud-provider-kubernetes.kubernetesMasterHostname=k8sMaster.panosc.eu \
+--set account-service.idp.url=https://server.com/.well-known/openid-configuration \
+--set account-service.idp.clientId=panosc \
+--set account-service.idp.loginField=user \
+--n panosc-portal
 ```
 
-You can then find the kubernetes services and pods in the namespace panosc-portal.
 
-## Uninstall  
-To uninstall all the kubernetes 
+## Uninstall the Chart
 ```
-helm uninstall <YourReleaseName>
+helm uninstall <YourReleaseName> -n panosc-portal
 ```
-Note: If you want to reinstall it afterwards, you will have to wait a couple of minutes for all the kubernetes namespaces to be deleted
+If you install your Chart in the default namespace, the flag -n is not needed
+
+
+## Use the portal
+
+### Manage instances
+To use the portal, you first need to clone the [API Service CLI Client](https://github.com/panosc-portal/api-service-client-cli)
+and add a config.json file at the root of the project with the following structure:
+```
+{
+  "idp": {
+    "url": "https://idp.com/auth/url/to/obtain/token",
+    "clientId": "a_client_id"
+  }
+}
+```
+After entering your first command, you will be asked to insert your username and password. A token will then be saved in the file token.json 
+
+You can then use the following commands to:
+
+- Add a user instance:
+```
+bin/run user-instance:add -u http://<KubernetesMasterNode>/portal
+```
+
+- List user instances:
+```
+bin/run user-instance:list -u http://<KubernetesMasterNode>/portal
+```
+
+- Get a user instance:
+```
+bin/run user-instance:get -u http://<KubernetesMasterNode>/portal
+```
+
+- Stop/start/reboot a user instance:
+```
+bin/run user-instance:stop -u http://<KubernetesMasterNode>/portal
+bin/run user-instance:start -u http://<KubernetesMasterNode>/portal
+bin/run user-instance:reboot -u http://<KubernetesMasterNode>/portal
+```
+
+- Delete a user instance:
+```
+bin/run user-instance:delete -u http://<KubernetesMasterNode>/portal
+```
+
+- Generate a user instance access token:
+```
+bin/run user-instance:token -u http://<KubernetesMasterNode>/portal
+```
+
+
+
+### Access instances
+#### Remote Desktop
+When the instance is in an active state you can access it with the following url :
+```
+http://<KubernetesMasterNode>/desktop/app/instances/{instanceId}?token={token}
+```
+You can get the instance id with the 'add' or 'list' command and create a access token with the 'token' command 
+
+#### Jupyter notebook 
+The notebooks are accessible by using the given hostname and HTTP port with the 'list' command  
 
 ## Database access
 All the databases of the portal can be access with the following information:  
@@ -42,20 +115,37 @@ port: 32400
 username: postgres
 ```
 
-## Documentation
+## Integration
+The PaNOSC Portal Demo integrate the following charts: 
 
 #### [Cloud Provider Kubernetes](../cloud-provider-kubernetes/README.md)
 
 #### [Cloud Service](../cloud-service/README.md)
-For the demo deployment, the plans have bean created in the given database.
-You can then create instances with those given plans.
 
+#### [Desktop Service](../desktop-service/README.md)
 
+#### [API Service](../api-service/README.md)
+
+#### [PaNosc Postgres](../panosc-postgres/README.md)
+
+#### [Desktop Service Web Test Client](../desktop-service-web-test-client/README.md)
+
+#### [Apache](https://github.com/bitnami/charts/tree/master/bitnami/apache)
+ 
 ## Status
 
 The deployment of the portal will be continually updated when new microservices are added. The current status is shown below.
 
 16/03/2019 :
 
-This project will deploy the  [Cloud Provider Kubernetes](https://github.com/panosc-portal/cloud-provider-kubernetes) and [Cloud service](https://github.com/panosc-portal/cloud-service) microservice and a PostgreSQL database with the example data. 
+This project will deploy the  [Cloud Provider Kubernetes](https://github.com/panosc-portal/cloud-provider-kubernetes) and [Cloud service](https://github.com/panosc-portal/cloud-service) microservice and a PostgreSQL database with the example data.
+ 
+01/04/2019:
 
+These microservices have been added to the portal:
+
+- [Account Service](https://github.com/panosc-portal/account-service)
+- [API Service](https://github.com/panosc-portal/api-service)
+- [Desktop Service](https://github.com/panosc-portal/desktop-service)
+
+The portal also deploys a Apache chart to act as a reverse proxy and a [desktop service web test client](https://github.com/panosc-portal/desktop-service-web-test-client) to access the remote desktop instances.

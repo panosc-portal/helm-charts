@@ -1,12 +1,12 @@
-var hashInt = require("hash-int")
+var hashInt = require("hash-int");
 
 function updateFromAccountInfo(account, accountInfo) {
-    account.username = accountInfo['preferred_username'];
+    account.username = accountInfo[process.env.ACCOUNT_SERVICE_LOGIN_FIELD];
     account.email = "example@portal.eu";
     account.uid = 1;
     account.gid = 1;
     account.homePath = "/home/panosc";
-    account.userId = hashInt(accountInfo['preferred_username']);
+    account.userId = hashInt(accountInfo[process.env.ACCOUNT_SERVICE_LOGIN_FIELD]);
 }
 exports.updateFromAccountInfo = updateFromAccountInfo;
 function update(account) {

@@ -12,3 +12,4 @@ git_repos
 /desktop-service/values-dev.yaml
 /cloud-provider-kubernetes/values-dev.yaml
 /cloud-service/values-dev.yaml
+/panosc-portal-demo/charts/*

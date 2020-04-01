@@ -4,16 +4,15 @@
 
 replicaCount: 1
 
+cloud-provider-kubernetes:
+  kubernetesMasterHostname:
+
 account-service:
-  attributeProviderFile:
+  attributeProviderConfigMap: panosc-portal-demo-attribute
   idp:
-    host:
+    url:
     clientId:
     loginField:
-  service:
-    nodePorts:
-      api: 32304
-      nodeJSDebug: 32405
 
 desktop-service:
   webServerHost: 0.0.0.0
@@ -47,11 +46,8 @@ apache:
   vhostsConfigMap: panosc-portal-demo-vhosts
 
 global:
-  namespace:
-    creation: true
-    name: panosc-portal
-
   database:
+    host:
     cloudProviderKubernetes:
       username: cloud-provider-kubernetes
       password: cloud-provider-kubernetes
