@@ -19,9 +19,9 @@ dependencies:
   version: 0.1.1
 - name: apache
   repository: https://charts.bitnami.com/bitnami
-  version: 7.0.0
+  version: 7.3.11
 - name: desktop-service-web-test-client
   repository: https://panosc-portal.github.io/helm-charts/
   version: 0.1.0
-digest: sha256:5427794870dd59b5d41584164bd55c25fdb31b3c44b56431759a57573f324480
-generated: "2020-03-31T19:23:30.166821+02:00"
+digest: sha256:2403aa67a515b9286cbd76b230608c02206474c0dd1bc11b066c04607533da78
+generated: "2020-04-01T13:38:09.297728+02:00"
