@@ -7,6 +7,6 @@ metadata:
   labels:
   {{- include "account-service.labels" . | nindent 4 }}
 data:
-  attribute-config.js: |-
+  attribute.js: |-
 {{ .Values.idp.attributeProviderFile | indent 4 }}
 {{ end }}

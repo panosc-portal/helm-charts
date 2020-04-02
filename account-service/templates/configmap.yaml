@@ -18,4 +18,4 @@ data:
   ACCOUNT_SERVICE_CLIENT_ID: {{ .Values.idp.clientId | quote }}
   ACCOUNT_SERVICE_LOGIN_FIELD: {{ .Values.idp.loginField | quote }}
   ACCOUNT_SERVICE_DEFAULT_ROLE_ID: {{ .Values.defaultRoleId | quote}}
-  ACCOUNT_SERVICE_ATTRIBUTE_PROVIDER: "/home/node/app/attribute/attributes-config.js"
+  ACCOUNT_SERVICE_ATTRIBUTE_PROVIDER: "/home/node/app/attribute/attribute.js"
