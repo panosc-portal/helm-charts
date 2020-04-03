@@ -5,4 +5,4 @@ metadata:
   namespace: {{ .Release.Namespace}}
   labels: {{- include "desktop-service-web-test-client.labels" . | nindent 4 }}
 data:
-  {{ (.Files.Glob "files/*.conf").AsConfig | indent 4 }}
+{{ (.Files.Glob "files/*.conf").AsConfig | indent 4 }}
