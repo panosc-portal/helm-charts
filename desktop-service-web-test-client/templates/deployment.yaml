@@ -19,8 +19,18 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.dockerTag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+          volumeMounts:
+            - mountPath: /opt/bitnami/apache/conf/vhosts
+              name: vhosts
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: vhosts
+          configMap:
+            name: {{ include "desktop-service-web-test-client.name" . }}-vhosts
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
