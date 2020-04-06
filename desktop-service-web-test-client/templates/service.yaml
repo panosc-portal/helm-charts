@@ -6,9 +6,11 @@ metadata:
   labels:
     {{- include "desktop-service-web-test-client.labels" . | nindent 4 }}
 spec:
+  type: NodePort
   ports:
     - port: 80
       targetPort: http
       name: http
+      nodePort: {{ .Values.service.nodePort }}
   selector:
     {{- include "desktop-service-web-test-client.selectorLabels" . | nindent 4 }}
