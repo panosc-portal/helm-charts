@@ -7,4 +7,4 @@ metadata:
   labels: {{- include "panosc-portal-demo.labels" . | nindent 4 }}
 data:
 {{ (.Files.Glob "files/*.js").AsConfig | indent 4 }}
-  {{ end }}
+{{ end }}

@@ -100,7 +100,7 @@ bin/run user-instance:token -u http://<KubernetesMasterNode>:32306/portal
 #### Remote Desktop
 When the instance is in an active state you can access it with the following url :
 ```
-http://<KubernetesMasterNode>:32306/desktop/app/instances/{instanceId}?token={token}
+http://<KubernetesMasterNode>:32407/desktop/app/instances/{instanceId}?token={token}
 ```
 You can get the instance id with the 'add' or 'list' command and create a access token with the 'token' command 
 
