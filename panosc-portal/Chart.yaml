@@ -22,8 +22,17 @@ appVersion: 1.16.0
 
 dependencies:
   - name: cloud-provider-kubernetes
-    version: 0.1.0
+    version: 0.1.1
     repository: https://panosc-portal.github.io/helm-charts/
   - name: cloud-service
-    version: 0.1.0
+    version: 0.1.1
+    repository: https://panosc-portal.github.io/helm-charts/
+  - name: desktop-service
+    version: 0.1.1
+    repository: https://panosc-portal.github.io/helm-charts/
+  - name: account-service
+    version: 0.1.1
+    repository: https://panosc-portal.github.io/helm-charts/
+  - name: api-service
+    version: 0.1.1
     repository: https://panosc-portal.github.io/helm-charts/

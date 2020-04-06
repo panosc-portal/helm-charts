@@ -55,7 +55,6 @@ image.dockerTag | apiService docker tag | testing
 image.pullPolicy | Image pull policy | Always
 service.nodePorts.api | NodePort for the api | 32304
 service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 
-defaultRoleId | Id of the role used for the default user | 1
 nodeSelector| Node labels for pod assignment| {}
 tolerations|Toleration labels for pod assignment| []
 affinity|Affinity labels for pod assignment|{}
