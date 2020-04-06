@@ -10,6 +10,7 @@ image:
   dockerTag: latest
   pullPolicy: IfNotPresent
 
+vdiUrl: http://localhost:32306
 
 nodeSelector: {}
 
