@@ -14,8 +14,7 @@ image:
 service:
   nodePort: 32407
 
-vdiUrl: http://localhost:32306
-
+vdiPort: 32306
 nodeSelector: {}
 
 tolerations: []
@@ -35,8 +34,11 @@ resources: {}
 #   memory: 128Mi
 
 
+global:
+  kubernetesMasterHostname:
 
-  #imagePullSecrets: []
+
+#imagePullSecrets: []
   #nameOverride: ""
   #fullnameOverride: ""
 

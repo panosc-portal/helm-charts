@@ -6,4 +6,4 @@ metadata:
   labels:
   {{- include "desktop-service-web-test-client.labels" . | nindent 4 }}
 data:
-  DESKTOP_SERVICE_WEB_TEST_CLIENT_VDI_HOST: {{ .Values.vdiUrl | quote}}
+  DESKTOP_SERVICE_WEB_TEST_CLIENT_VDI_HOST: "http://{{ .Values.global.kubernetesMasterHostname}}:{{ .Values.vdiPort }}"

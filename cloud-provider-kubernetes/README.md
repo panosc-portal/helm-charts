@@ -20,7 +20,7 @@ helm install my-release panosc-portal/cloud-provider-kubernetes \
 --set global.database.host=database.panosc.eu \
 --set global.database.cloudPoviderKubernetes.username=test \
 --set global.database.cloudPoviderKubernetes.password=password \
---set kubernetesMasterHostname=k8smaster.panosc.eu \
+--set global.kubernetesMasterHostname=k8smaster.panosc.eu \
 -n <existantNamespace>
 ```
 
@@ -35,7 +35,7 @@ helm upgrade my-release panosc-portal/cloud-provider-kubernetes \
 or specify the values that you want to modify with the flag --set:
 ```
 helm upgrade my-release panosc-portal/cloud-provider-kubernetes \
---set kubernetesMasterHostname=newMaster.panosc.eu\
+--set global.kubernetesMasterHostname=newMaster.panosc.eu\
 -n <releaseNamespace>
 
 ```
@@ -54,7 +54,6 @@ image.registry| Define the registry where the CloudProviderKubernetes is stored 
 image.repository | CloudProviderKubernetes docker image | panosc/cloud-provider-kubernetes
 image.dockerTag | CloudProviderKubernetes docker tag |testing
 image.pullPolicy | Image pull policy | Always
-kubernetesMasterHostname | Hostname or ip of the kubernetes master node |
 service.nodePorts.api | NodePort for the api | 32300
 service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 
 namespace.instances.creation | Boolean to create or not the instances namespace | true
@@ -66,7 +65,7 @@ tolerations|Toleration labels for pod assignment| []
 affinity|Affinity labels for pod assignment|{}
 resources|Custom resource configuration for the CloudProviderKubernetes pod | {}
 logLevel| Log level of the CloudProviderKubernetes ( debug, info, warn, error | debug
-global.namespace.name | Name of namespace in witch the microservice will be installed (namespace must be already created) | default
+global.kubernetesMasterHostname | Hostname or ip of the kubernetes master node |
 global.database.host| Database hostname | 
 global.database.port| Database port | 5432
 global.database.type| Database type (oracle, postgres, mariadb ...) | postgres

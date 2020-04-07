@@ -4,8 +4,6 @@
 
 replicaCount: 1
 
-cloud-provider-kubernetes:
-  kubernetesMasterHostname:
 
 account-service:
   idp:
@@ -50,6 +48,7 @@ apache:
       http: 32306
 
 global:
+  kubernetesMasterHostname:
   database:
     host: panosc-postgres
     cloudProviderKubernetes:

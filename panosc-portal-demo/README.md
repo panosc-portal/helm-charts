@@ -30,7 +30,7 @@ Then you can run the helm install command followed by:
 You can also specify a existent namespace with the flag -n if you dont want to install the cart in the default namespce
 ```
 helm install <YourReleaseName> panosc-portal/panosc-portal-demo \
---set cloud-provider-kubernetes.kubernetesMasterHostname=<Yourk8sMaster> \
+--set global.kubernetesMasterHostname=<Yourk8sMaster> \
 --set account-service.idp.url=<YourOpenIDDiscoveryEndpoint> \
 --set account-service.idp.clientId=<YourClientID> \
 --set account-service.idp.loginField=<YourLoginField> \
@@ -102,7 +102,7 @@ When the instance is in an active state you can access it with the following url
 ```
 http://<KubernetesMasterNode>:32407/instances/{instanceId}?token={token}
 ```
-You can get the instance id with the 'add' or 'list' command and create a access token with the 'token' command 
+You can get the instance id with the 'add' or 'list' command and create a access token with the 'token' command.  
 Use the username and password 'ubuntu' to login.
 
 #### Jupyter notebook 
