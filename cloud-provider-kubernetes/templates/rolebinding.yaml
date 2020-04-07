@@ -6,7 +6,7 @@ metadata:
   {{- include "cloud-provider-kubernetes.labels" . | nindent 4 }}
 roleRef:
   kind: ClusterRole
-  name: {{ include "cloud-provider-kubernetes.fullname" . }}-cluster-role
+  name: {{ include "cloud-provider-kubernetes.name" . }}-cluster-role
   apiGroup: rbac.authorization.k8s.io
 subjects:
   - kind: ServiceAccount
