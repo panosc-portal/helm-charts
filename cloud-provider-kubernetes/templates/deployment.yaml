@@ -15,6 +15,7 @@ spec:
       labels:
         {{- include "cloud-provider-kubernetes.selectorLabels" . | nindent 8 }}
     spec:
+      serviceAccountName: {{ include "cloud-provider-kubernetes.name" . }}-sa
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.dockerTag }}"

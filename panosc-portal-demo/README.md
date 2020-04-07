@@ -23,18 +23,18 @@ helm repo add panosc-portal https://panosc-portal.github.io/helm-charts/
 
 Then you can run the helm install command followed by: 
 - The hostname of your Kubernetes mater node
-- The URL to the OpenID discovery endpoint of your IDP
+- The URL to the OpenID discovery endpoint of your IDP (example: https://server.com/.well-known/openid-configuration)
 - The Client ID configured in your OpenID provider 
 - The attribute name in your IDP providing that is used for login 
 
 You can also specify a existent namespace with the flag -n if you dont want to install the cart in the default namespce
 ```
 helm install <YourReleaseName> panosc-portal/panosc-portal-demo \
---set cloud-provider-kubernetes.kubernetesMasterHostname=k8sMaster.panosc.eu \
---set account-service.idp.url=https://server.com/.well-known/openid-configuration \
---set account-service.idp.clientId=panosc \
---set account-service.idp.loginField=user \
--n panosc-portal
+--set cloud-provider-kubernetes.kubernetesMasterHostname=<Yourk8sMaster> \
+--set account-service.idp.url=<YourOpenIDDiscoveryEndpoint> \
+--set account-service.idp.clientId=<YourClientID> \
+--set account-service.idp.loginField=<YourLoginField> \
+-n <YourExistentNamespace>
 ```
 
 

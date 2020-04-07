@@ -69,10 +69,7 @@ cloud-provider-kubernetes.kubernetesMasterHostname | Hostname or ip of the kuber
 cloud-provider-kubernetes.namespace.instances.creation | Boolean to create or not the instances namespace | true
 cloud-provider-kubernetes.namespace.instances.name| Name of the instances namespace | panosc-instances 
 cloud-provider-kubernetes.service.nodePorts.api | NodePort for the api | 32300
-cloud-provider-kubernetes.service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging 
-cloud-provider-kubernetes.namespace.instances.creation | Boolean to create or not the instances namespace | true
-cloud-provider-kubernetes.namespace.instances.name| Name of the instances namespace | panosc-instances 
-cloud-provider-kubernetes.kubernetesRequestHelperFile | Content of a file containing a  kubernetes request helper (via --set-file) |
+cloud-provider-kubernetes.service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging cloud-provider-kubernetes.kubernetesRequestHelperFile | Content of a file containing a  kubernetes request helper (via --set-file) |
 cloud-provider-kubernetes.dockerSecretFile |  Content of a file containing secrets for private docker repository (via --set-file) |
 cloud-provider-kubernetes.nodeSelector| Node labels for pod assignment| {}
 cloud-provider-kubernetes.tolerations| CloudProviderKubernetes toleration labels for pod assignment| []
