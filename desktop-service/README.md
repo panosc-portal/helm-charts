@@ -48,7 +48,7 @@ replicaCount | Number of desktopService replica | 1
 webServerHost | Hostname of the WebServer (ie Apache, Nginx) | 
 image.registry| Define the registry where the desktopService is stored | docker.io
 image.repository | DesktopService docker image | panosc/desktop-service
-image.dockerTag | DesktopService docker tag | testing
+image.dockerTag | DesktopService docker tag | 1.0.0
 image.pullPolicy | Image pull policy | Always
 service.type | Kubernetes Service type | ClusterIP
 service.apiPort | Service API port | 8085

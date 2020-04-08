@@ -52,7 +52,7 @@ Value | Definition | Default
 replicaCount | Number of CloudProviderKubernetes replica | 1
 image.registry| Define the registry where the CloudProviderKubernetes is stored | docker.io
 image.repository | CloudProviderKubernetes docker image | panosc/cloud-provider-kubernetes
-image.dockerTag | CloudProviderKubernetes docker tag |testing
+image.dockerTag | CloudProviderKubernetes docker tag |1.0.0
 image.pullPolicy | Image pull policy | Always
 service.type | Kubernetes Service type | ClusterIP
 service.apiPort | Service API port | 3000

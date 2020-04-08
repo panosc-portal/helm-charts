@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   registry: docker.io
   repository: panosc/desktop-service
-  dockerTag: testing
+  dockerTag: 1.0.0
   pullPolicy: Always
 
 webServerHost:

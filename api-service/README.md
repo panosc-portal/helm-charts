@@ -51,7 +51,7 @@ Value | Definition | Default
 replicaCount | Number of apiService replica | 1
 image.registry| Define the registry where the apiService is stored | docker.io
 image.repository | apiService docker image | panosc/api-service
-image.dockerTag | apiService docker tag | testing
+image.dockerTag | apiService docker tag | 1.0.0
 image.pullPolicy | Image pull policy | Always
 service.type | Kubernetes Service type | ClusterIP
 service.apiPort | Service API port | 3000

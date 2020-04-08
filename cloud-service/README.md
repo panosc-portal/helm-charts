@@ -52,7 +52,7 @@ Value | Definition | Default
 replicaCount | Number of CloudService replica | 1
 image.registry| Define the registry where the CloudService is stored | docker.io
 image.repository | CloudService docker image | panosc/cloud-service
-image.dockerTag | CloudService docker tag |testing
+image.dockerTag | CloudService docker tag | 1.0.0
 image.pullPolicy | Image pull policy | Always
 service.type | Kubernetes Service type | ClusterIP
 service.apiPort | Service API port | 3000
