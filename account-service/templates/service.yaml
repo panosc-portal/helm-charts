@@ -6,13 +6,20 @@ metadata:
   labels:
     {{- include "account-service.labels" . | nindent 4 }}
 spec:
-  type: NodePort
+  type: {{ .Values.service.type }}
+  {{- if and (eq .Values.service.type "LoadBalancer") (not (empty .Values.service.loadBalancerIP)) }}
+  loadBalancerIP: {{ .Values.service.loadBalancerIP }}
+  {{- end }}
   ports:
     - name: api
-      port: 3000
+      targetPort: api
+      port: {{ .Values.service.apiPort }}
+      {{- if and (or (eq .Values.service.type "NodePort") (eq .Values.service.type "LoadBalancer")) .Values.service.nodePorts.api }}
       nodePort: {{ .Values.service.nodePorts.api }}
-    {{- if .Values.service.nodePorts.nodeJSDebug}}
+      {{- end }}
+    {{- if and (or (eq .Values.service.type "NodePort") (eq .Values.service.type "LoadBalancer")) .Values.service.nodePorts.nodeJSDebug}}
     - name: debug
+      targetPort: debug
       port: 9229
       nodePort: {{.Values.service.nodePorts.nodeJSDebug}}
     {{- end }}

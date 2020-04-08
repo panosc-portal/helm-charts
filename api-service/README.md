@@ -53,8 +53,10 @@ image.registry| Define the registry where the apiService is stored | docker.io
 image.repository | apiService docker image | panosc/api-service
 image.dockerTag | apiService docker tag | testing
 image.pullPolicy | Image pull policy | Always
-service.nodePorts.api | NodePort for the api | 32304
-service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 
+service.type | Kubernetes Service type | ClusterIP
+service.apiPort | Service API port | 3000
+service.nodePorts.api | NodePort for the api | 
+service.nodePorts.nodeJSDebug |  NodePort for nodeJS debugging | 
 nodeSelector| Node labels for pod assignment| {}
 tolerations|Toleration labels for pod assignment| []
 affinity|Affinity labels for pod assignment|{}

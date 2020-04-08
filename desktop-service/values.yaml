@@ -13,9 +13,13 @@ image:
 webServerHost:
 
 service:
+  type: ClusterIP
+  apiPort: 8085
+  socketPort: 8087
   nodePorts:
-    api : 32302
-    socket: 32403
+    api :
+    socket:
+  loadBalancerIP:
 
 nodeSelector: {}
 

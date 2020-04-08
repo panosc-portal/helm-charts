@@ -6,13 +6,22 @@ metadata:
   labels:
     {{- include "desktop-service.labels" . | nindent 4 }}
 spec:
-  type: NodePort
+  type: {{ .Values.service.type }}
+  {{- if and (eq .Values.service.type "LoadBalancer") (not (empty .Values.service.loadBalancerIP)) }}
+  loadBalancerIP: {{ .Values.service.loadBalancerIP }}
+  {{- end }}
   ports:
-      - name: api
-        port: 8085
-        nodePort: {{ .Values.service.nodePorts.api }}
-      - name: socket
-        port: 8087
-        nodePort: {{.Values.service.nodePorts.socket}}
+    - name: api
+      targetPort: api
+      port: {{ .Values.service.apiPort }}
+      {{- if and (or (eq .Values.service.type "NodePort") (eq .Values.service.type "LoadBalancer")) .Values.service.nodePorts.api }}
+      nodePort: {{ .Values.service.nodePorts.api }}
+      {{- end }}
+    - name: socket
+      targetPort: socket
+      port: {{ .Values.service.socketPort }}
+      {{- if and (or (eq .Values.service.type "NodePort") (eq .Values.service.type "LoadBalancer")) .Values.service.nodePorts.socket}}
+      nodePort: {{.Values.service.nodePorts.socket}}
+      {{- end }}
   selector:
     {{- include "desktop-service.selectorLabels" . | nindent 4 }}

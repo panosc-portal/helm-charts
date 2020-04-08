@@ -28,6 +28,10 @@ spec:
           ports:
             - name: api
               containerPort: 3000
+            {{- if .Values.service.nodePorts.nodeJSDebug }}
+            - name: debug
+              containerPort: 9229
+            {{- end }}
           envFrom:
             - configMapRef:
                 name: {{ include "api-service.name" . }}-config

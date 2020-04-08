@@ -22,29 +22,47 @@ Then you can run the helm install command followed by:
 - The hostname of your Kubernetes mater node
 - The URL to the OpenID discovery endpoint of your IDP
 - The Client ID configured in your OpenID provider 
-- The attribute name in your IDP providing that is used for login 
+- The attribute name in your IDP providing that is used for login
+- The hostname of your database
+- The password for the database user cloud-provider-kubernetes, cloud-service, desktop-service and account-service
+
 
 You can also specify a existent namespace with the flag -n if you dont want to install the cart in the default namespce
 ```
 helm install <YourReleaseName> panosc-portal/panosc-portal-demo \
---set cloud-provider-kubernetes.kubernetesMasterHostname=k8sMaster.panosc.eu \
---set account-service.idp.url=https://server.com/.well-known/openid-configuration \
---set account-service.idp.clientId=panosc \
---set account-service.idp.loginField=user \
--n panosc-portal
+--set global.kubernetesMasterHostname=Yourk8sMaster> \
+--set account-service.idp.url=<YourOpenIDDiscoveryEndpoint> \
+--set account-service.idp.clientId=<YourClientID> \
+--set account-service.idp.loginField=<YourLoginField> \
+--set global.database.host=<YourDatabaseHost> \
+--set global.database.cloudProviderKubernetes.password=<CloudProviderKubernetesPassword> \
+--set global.database.cloudService.password=<CloudServiceKubernetesPassword> \
+--set global.database.desktopService.password=<DesktopServicePassword> \
+--set global.database.accountService.password=<AccountServicePassword> \
+-n <YourExistentNamespace>
 ```
+You can also create a values.yaml file by copying the one in the chart and setting the necessary values and using the 
+flag -f to reference this file
+
+````
+helm install <YourReleaseName> panosc-portal/panosc-portal-demo \
+-f <PathToYourValuesFile> -n <YourExistentNamespace>
+````
 
 If you want to modify other values, see the list of values bellow.
 
 ## Upgrade
 After installing the chart, you can upgrade to a new version of the chart and set new values to it.
-You can ether specify a value file with the flag "-f" followed by the name or URL of the value file :
+Like the installation, you can ether specify a value file with the flag "-f" followed by the path to your values file :
 ```
-helm upgrade -f myvalues.yaml panosc-portal panosc-portal/panosc-portal
+helm upgrade -f myvalues.yaml panosc-portal panosc-portal/panosc-portal \
+-n <YourReleasetNamespace>
 ```
 or specify the values that you want to modify with the flag --set:
 ```
-helm upgrade --set panoscPortal.namespace=panosc-portal --set cloudProviderKubernetes.instancesNamespace=panosc-instances panosc-portal panosc-portal/panosc-portal
+helm upgrade panosc-portal panosc-portal/panosc-portal \
+--set cloud-provider-kubernetes.instancesNamespace=panosc-instances \
+-n <YourReleasetNamespace>
 ```
 See (https://helm.sh/docs/helm/helm_upgrade/) for more information
 
@@ -68,8 +86,11 @@ cloud-provider-kubernetes.image.dockerTag | CloudProviderKubernetes docker tag |
 cloud-provider-kubernetes.kubernetesMasterHostname | Hostname or ip of the kubernetes master node |
 cloud-provider-kubernetes.namespace.instances.creation | Boolean to create or not the instances namespace | true
 cloud-provider-kubernetes.namespace.instances.name| Name of the instances namespace | panosc-instances 
-cloud-provider-kubernetes.service.nodePorts.api | NodePort for the api | 32300
-cloud-provider-kubernetes.service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging cloud-provider-kubernetes.kubernetesRequestHelperFile | Content of a file containing a  kubernetes request helper (via --set-file) |
+cloud-provider-kubernetes.service.type | Kubernetes Service type | ClusterIP
+cloud-provider-kubernetes.service.apiPort | Service API port | 3000
+cloud-provider-kubernetes.service.nodePorts.api | NodePort for the api | 
+cloud-provider-kubernetes.service.nodePorts.nodeJSDebug |  NodePort for nodeJS debugging | 
+cloud-provider-kubernetes.service.loadBalancerIP | LoadBalancer service IP address
 cloud-provider-kubernetes.dockerSecretFile |  Content of a file containing secrets for private docker repository (via --set-file) |
 cloud-provider-kubernetes.nodeSelector| Node labels for pod assignment| {}
 cloud-provider-kubernetes.tolerations| CloudProviderKubernetes toleration labels for pod assignment| []
@@ -85,6 +106,11 @@ cloud-service.image.registry| Define the registry where the cloudService is stor
 cloud-service.image.repository | CloudService docker image | panosc/cloud-service
 cloud-service.image.pullPolicy | CloudService image pull policy | Always
 cloud-service.image.dockerTag | CloudService docker tag | testing
+cloud-service.service.type | Kubernetes Service type | ClusterIP
+cloud-service.service.apiPort | Service API port | 3000
+cloud-service.service.nodePorts.api | NodePort for the api | 
+cloud-service.service.nodePorts.nodeJSDebug |  NodePort for nodeJS debugging | 
+cloud-service.service.loadBalancerIP | LoadBalancer service IP address 
 cloud-service.service.nodePorts.api | CloudService NodePort for the api | 32301
 cloud-service.service.nodePorts.nodeJSDebug | (optional) CloudService NodePort for nodeJS debugging 
 cloud-service.nodeSelector| CloudService node labels for pod assignment| {}
@@ -101,8 +127,12 @@ desktop-service.image.registry| Define the registry where the desktopService is 
 desktop-service.image.repository | DesktopService docker image | panosc/desktop-service
 desktop-service.image.pullPolicy | DesktopService image pull policy | Always
 desktop-service.image.dockerTag | DesktopService docker tag | testing
-desktop-service.service.nodePorts.api | DesktopService NodePort for the api | 32301
-desktop-service.service.nodePorts.nodeJSDebug | (optional) DesktopService NodePort for nodeJS debugging | 
+desktop-service.service.type | Kubernetes Service type | ClusterIP
+desktop-service.service.apiPort | Service API port | 8085
+desktop-service.service.socketPort | Service socket port | 8087
+desktop-service.service.nodePorts.api | NodePort for the api | 
+desktop-service.service.nodePorts.socket | NodePort for the web socket | 
+desktop-service.service.loadBalancerIP | LoadBalancer service IP address
 desktop-service.webServerHost | Hostname of the WebServer (ie Apache, Nginx) | 
 desktop-service.nodeSelector| DesktopService node labels for pod assignment| {}
 desktop-service.tolerations| DesktopService toleration labels for pod assignment| []
@@ -118,8 +148,10 @@ account-service.image.registry| Define the registry where the accountService is 
 account-service.image.repository | AccountService docker image | panosc/account-service
 account-service.image.pullPolicy | AccountService image pull policy | Always
 account-service.image.dockerTag | AccountService docker tag | testing
-account-service.service.nodePorts.api | AccountService NodePort for the api | 32301
-account-service.service.nodePorts.nodeJSDebug | (optional) AccountService NodePort for nodeJS debugging | 
+account-service.service.type | Kubernetes Service type | ClusterIP
+account-service.service.apiPort | Service API port | 3000
+account-service.service.nodePorts.api | NodePort for the api | 
+account-service.service.nodePorts.nodeJSDebug |  NodePort for nodeJS debugging |
 account-service.idp.url | URL to the OpenID discovery endpoint (eg https://server.com/.well-known/openid-configuration) |
 account-service.idp.clientId | Client id referenced in your Identity Provider to use for the accountService |
 account-service.idp.loginField | Field in your Identity Provider used for login |
@@ -140,8 +172,10 @@ api-service.image.registry| Define the registry where the apiService is stored |
 api-service.image.repository | ApiService docker image | panosc/api-service
 api-service.image.pullPolicy | ApiService image pull policy | Always
 api-service.image.dockerTag | ApiService docker tag | testing
-api-service.service.nodePorts.api | ApiService NodePort for the api | 32301
-api-service.service.nodePorts.nodeJSDebug | (optional) ApiService NodePort for nodeJS debugging | 
+api-service.service.type | Kubernetes Service type | ClusterIP
+api-service.service.apiPort | Service API port | 3000
+api-service.service.nodePorts.api | NodePort for the api | 
+api-service.service.nodePorts.nodeJSDebug |  NodePort for nodeJS debugging |
 api-service.nodeSelector| ApiService node labels for pod assignment| {}
 api-service.tolerations| ApiService toleration labels for pod assignment| []
 api-service.affinity| ApiService affinity labels for pod assignment|{}
@@ -152,7 +186,7 @@ api-service.logLevel| ApiService log level ( debug, info, warn, error | debug
 ### Global
  Value | Definition | Default
  ------------- | ------------- |  ------------- | 
-global.database.host| Database hostname | panosc-postgres
+global.database.host| Database hostname | 
 global.database.port| Database port | 5432
 global.database.type| Database type (oracle, postgres, mariadb ...) | postgres
 global.database.log| Boolean to activate or not database logs | false
@@ -173,14 +207,26 @@ global.database.accountService.username| Username to access the accountService m
 global.database.accountService.password| Password to access the accountService microservice database 
 global.database.accountService.databaseName| Database name for the accountService microservice | account-service
 global.database.accountService.schema| Database schema for the accountService microservice (if definable) | account-service
+global.kubernetesMasterHostname | Hostname or ip of the kubernetes master node |
 global.apiService.host | Hostname of the apiService | api-service
 global.apiService.port | Port of the webApi for the apiService | 3000
 global.cloudService.host | Hostname of the apiService | api-service
 global.cloudService.port | Port of the webApi for the apiService | 3000
 
-## Documentation
+## Implementation
+The PaNOSC Portal integrate the following charts: 
+
 #### [Cloud Provider Kubernetes](../cloud-provider-kubernetes/README.md)
+
 #### [Cloud Service](../cloud-service/README.md)
+
+#### [Desktop Service](../desktop-service/README.md)
+
+#### [Account Service](../account-service/README.md)
+
+#### [API Service](../api-service/README.md)
+
+
 
 
 ## Status

@@ -23,9 +23,12 @@ defaultRoleId: 1
 
 
 service:
+  type: ClusterIP
+  apiPort: 3000
   nodePorts:
-    api : 32304
+    api :
     nodeJSDebug:
+  loadBalancerIP:
 
 nodeSelector: {}
 

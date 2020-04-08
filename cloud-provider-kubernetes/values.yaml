@@ -11,9 +11,12 @@ image:
   pullPolicy: Always
 
 service:
+  type: ClusterIP
+  apiPort: 3000
   nodePorts:
-    api : 32300
+    api :
     nodeJSDebug:
+  loadBalancerIP:
 
 namespace:
   instances:

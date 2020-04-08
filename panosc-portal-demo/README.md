@@ -102,7 +102,7 @@ When the instance is in an active state you can access it with the following url
 ```
 http://<KubernetesMasterNode>:32407/instances/{instanceId}?token={token}
 ```
-You can get the instance id with the 'add' or 'list' command and create a access token with the 'token' command.  
+You can get the instance id with the 'add' or 'list' command and create a access token with the 'token' command.<br/>
 Use the username and password 'ubuntu' to login.
 
 #### Jupyter notebook 

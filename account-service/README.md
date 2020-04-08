@@ -57,8 +57,11 @@ image.registry| Define the registry where the accountService is stored | docker.
 image.repository | accountService docker image | panosc/account-service
 image.dockerTag | accountService docker tag | testing
 image.pullPolicy | Image pull policy | Always
-service.nodePorts.api | NodePort for the api | 32304
-service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 
+service.type | Kubernetes Service type | ClusterIP
+service.apiPort | Service API port | 3000
+service.nodePorts.api | NodePort for the api | 
+service.nodePorts.nodeJSDebug |  NodePort for nodeJS debugging | 
+service.loadBalancerIP | LoadBalancer service IP address
 idp.url | URL to the OpenID discovery endpoint (eg https://server.com/.well-known/openid-configuration) |
 idp.clientId | Client id referenced in your Identity Provider to use for the Account Service |
 idp.loginField | Field in your Identity Provider used for login |

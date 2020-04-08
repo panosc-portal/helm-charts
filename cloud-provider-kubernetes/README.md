@@ -54,8 +54,11 @@ image.registry| Define the registry where the CloudProviderKubernetes is stored 
 image.repository | CloudProviderKubernetes docker image | panosc/cloud-provider-kubernetes
 image.dockerTag | CloudProviderKubernetes docker tag |testing
 image.pullPolicy | Image pull policy | Always
-service.nodePorts.api | NodePort for the api | 32300
-service.nodePorts.nodeJSDebug | (optional) NodePort for nodeJS debugging | 
+service.type | Kubernetes Service type | ClusterIP
+service.apiPort | Service API port | 3000
+service.nodePorts.api | NodePort for the api | 
+service.nodePorts.nodeJSDebug |  NodePort for nodeJS debugging | 
+service.loadBalancerIP | LoadBalancer service IP address
 namespace.instances.creation | Boolean to create or not the instances namespace | true
 namespace.instances.name| Name of the instances namespace | panosc-instances 
 kubernetesRequestHelperFile | Content of a file containing a  kubernetes request helper (via --set-file) |

@@ -11,9 +11,12 @@ image:
   pullPolicy: Always
 
 service:
+  type: ClusterIP
+  apiPort: 3000
   nodePorts:
-    api : 32301
+    api :
     nodeJSDebug:
+  loadBalancerIP:
 
 kubernetesRequestHelperFile:
 
