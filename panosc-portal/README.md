@@ -82,7 +82,7 @@ cloud-provider-kubernetes.replicaCount | Number of cloudProviderKubernetes repli
 cloud-provider-kubernetes.image.registry| Define the registry where the cloudProviderKubernetes is stored | docker.io
 cloud-provider-kubernetes.image.repository | CloudProviderKubernetes docker image | panosc/cloud-provider-kubernetes
 cloud-provider-kubernetes.image.pullPolicy | Image pull policy | Always
-cloud-provider-kubernetes.image.dockerTag | CloudProviderKubernetes docker tag | testing
+cloud-provider-kubernetes.image.dockerTag | CloudProviderKubernetes docker tag | 1.0.0
 cloud-provider-kubernetes.kubernetesMasterHostname | Hostname or ip of the kubernetes master node |
 cloud-provider-kubernetes.namespace.instances.creation | Boolean to create or not the instances namespace | true
 cloud-provider-kubernetes.namespace.instances.name| Name of the instances namespace | panosc-instances 
@@ -105,7 +105,7 @@ cloud-service.replicaCount | Number of cloudService replica | 1
 cloud-service.image.registry| Define the registry where the cloudService is stored | docker.io
 cloud-service.image.repository | CloudService docker image | panosc/cloud-service
 cloud-service.image.pullPolicy | CloudService image pull policy | Always
-cloud-service.image.dockerTag | CloudService docker tag | testing
+cloud-service.image.dockerTag | CloudService docker tag | 1.0.0
 cloud-service.service.type | Kubernetes Service type | ClusterIP
 cloud-service.service.apiPort | Service API port | 3000
 cloud-service.service.nodePorts.api | NodePort for the api | 
@@ -126,7 +126,7 @@ desktop-service.replicaCount | Number of desktopService replica | 1
 desktop-service.image.registry| Define the registry where the desktopService is stored | docker.io
 desktop-service.image.repository | DesktopService docker image | panosc/desktop-service
 desktop-service.image.pullPolicy | DesktopService image pull policy | Always
-desktop-service.image.dockerTag | DesktopService docker tag | testing
+desktop-service.image.dockerTag | DesktopService docker tag | 1.0.0
 desktop-service.service.type | Kubernetes Service type | ClusterIP
 desktop-service.service.apiPort | Service API port | 8085
 desktop-service.service.socketPort | Service socket port | 8087
@@ -147,7 +147,7 @@ account-service.replicaCount | Number of accountService replica | 1
 account-service.image.registry| Define the registry where the accountService is stored | docker.io
 account-service.image.repository | AccountService docker image | panosc/account-service
 account-service.image.pullPolicy | AccountService image pull policy | Always
-account-service.image.dockerTag | AccountService docker tag | testing
+account-service.image.dockerTag | AccountService docker tag | 1.0.0
 account-service.service.type | Kubernetes Service type | ClusterIP
 account-service.service.apiPort | Service API port | 3000
 account-service.service.nodePorts.api | NodePort for the api | 
@@ -171,7 +171,7 @@ api-service.replicaCount | Number of apiService replica | 1
 api-service.image.registry| Define the registry where the apiService is stored | docker.io
 api-service.image.repository | ApiService docker image | panosc/api-service
 api-service.image.pullPolicy | ApiService image pull policy | Always
-api-service.image.dockerTag | ApiService docker tag | testing
+api-service.image.dockerTag | ApiService docker tag | 1.0.0
 api-service.service.type | Kubernetes Service type | ClusterIP
 api-service.service.apiPort | Service API port | 3000
 api-service.service.nodePorts.api | NodePort for the api | 

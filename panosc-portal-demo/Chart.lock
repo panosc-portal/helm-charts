@@ -1,27 +1,27 @@
 dependencies:
 - name: cloud-provider-kubernetes
   repository: https://panosc-portal.github.io/helm-charts/
-  version: 0.1.1
+  version: 1.0.0
 - name: panosc-postgres
   repository: https://panosc-portal.github.io/helm-charts/
   version: 0.1.4
 - name: cloud-service
   repository: https://panosc-portal.github.io/helm-charts/
-  version: 0.1.1
+  version: 1.0.0
 - name: desktop-service
   repository: https://panosc-portal.github.io/helm-charts/
-  version: 0.1.1
+  version: 1.0.0
 - name: account-service
   repository: https://panosc-portal.github.io/helm-charts/
-  version: 0.1.1
+  version: 1.0.0
 - name: api-service
   repository: https://panosc-portal.github.io/helm-charts/
-  version: 0.1.1
+  version: 1.0.0
 - name: apache
   repository: https://charts.bitnami.com/bitnami
   version: 7.3.11
 - name: desktop-service-web-test-client
   repository: https://panosc-portal.github.io/helm-charts/
   version: 0.1.0
-digest: sha256:2403aa67a515b9286cbd76b230608c02206474c0dd1bc11b066c04607533da78
-generated: "2020-04-06T16:20:01.754729+02:00"
+digest: sha256:27eda2e1c5f80c093a55c8df7cbedfbf1608e3100d1f86de47241780d6036f2f
+generated: "2020-04-08T15:02:55.718127+02:00"
